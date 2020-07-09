@@ -1,29 +1,45 @@
-<h2>Sign up</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">新規登録</h1>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="姓">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="名">
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.email_field :email, type: "email", class: "form-control form-control-user", 
+                id: "exampleInputEmail", placeholder: "メールアドレス" %> <!-- autocomplete:off -->
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <%= f.password_field :password, autocomplete: "new-password", type: "password", class: "form-control form-control-user", id: "exampleInputPassword", placeholder: "パスワード(６文字以上)" %>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password",type: "password", class: "form-control form-control-user", id: "exampleRepeatPassword" , placeholder: "パスワード確認用" %>
+                </div>
+              </div>               
+                <%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block"%>        
+                <hr>  
+              <div class="text-center">
+                <%= render "devise/shared/links", class: "small" %>               
+              </div>
+                <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

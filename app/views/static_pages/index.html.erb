@@ -1,2 +1,5 @@
 <h2>pet health</h2>
-
+<%= link_to '新規登録', new_user_registration_path %>
+<%= link_to 'ログイン', user_session_path %>
+<%= link_to '利用規約', static_pages_path %>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
