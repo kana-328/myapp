@@ -27,6 +27,7 @@ group :development, :test do
   gem 'webdrivers'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'unicorn'
 end
 
 group :development do

@@ -4,7 +4,7 @@ default: &default
   encoding: unicode
   host: <%= ENV['POSTGRES_HOST'] %>
   username: postgres
-  password: password
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: 5
 
 development:
@@ -14,9 +14,10 @@ development:
 test:
   <<: *default
   database: myapp_test
-  
+
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  host:     <%= ENV['PRODUCTION_HOST'] %>
+  database: <%= ENV['PRODUCTION_DB'] %>
+  username: <%= ENV['PRODUCTION_NAME'] %>
+  password: <%= ENV['PRODUCTION_PASSWORD'] %>
