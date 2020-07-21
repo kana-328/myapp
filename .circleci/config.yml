@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   rubocop:
     docker:
-      - image: circleci/ruby:2.5.1-stretch
+      - image: circleci/ruby:2.5.1
         environment:
           RAILS_ENV: test
           POSTGRES_HOST: db
@@ -15,6 +15,7 @@ jobs:
     working_directory: ~/myapp
     steps:
       - checkout
+      - setup_remote_docker
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
