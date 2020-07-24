@@ -28,7 +28,7 @@ jobs:
       - run: docker-compose exec app bundle exec rake db:schema:load
       - run:
           name: RSpecテスト実行
-          command: docker-compose exec app bundle exec rspec
+          command: docker-compose exec app bundle exec bin/rspec
       - run:
           name: Run rubocop
           command: docker-compose exec app bundle exec rubocop
