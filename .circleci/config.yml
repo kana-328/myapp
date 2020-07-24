@@ -1,82 +1,40 @@
-
-version: 2.1
+version: 2
 jobs:
-  rubocop:
-    docker:
-      - image: circleci/ruby:2.5.1
-        environment:
-          RAILS_ENV: test
-          POSTGRES_HOST: db
-      - image: circleci/postgres:latest
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: password
-    working_directory: ~/myapp
+  build:
+    machine:
+      image: circleci/classic:edge
     steps:
       - checkout
-      - setup_remote_docker
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
       - run:
-          name: Start containers and verify it is working
+          name: mv docker-compose.yml
           command: |
-            set -x
-            docker-compose up -d
-            docker exec myapp_web_1 curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:3000  
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: yarn install
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      # Rubocop
+            mv Docker-compose.yml docker-compose.yml
+            mv Dockerfile dockerfile
       - run:
-          name: Rubocop
-          command: bundle exec rubocop
-  rspec:
-    docker:
-      - image: circleci/ruby
-        environment:
-          RAILS_ENV: test
-          POSTGRES_HOST: db
-      - image: circleci/postgres:latest
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: password
-    working_directory: ~/myapp
-    steps:
-      - checkout
+          name: docker-compose build
+          command: docker-compose build
+      - run:
+          name: docker-compose up
+          command: docker-compose up -d
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - run: yarn install
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+      - run:
+          name: Which bundler?
+          command: bundle -v
       - save_cache:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-      # Rspec
+      - run: docker-compose exec app bundle exec rake db:create
+      - run: docker-compose exec app bundle exec rake db:schema:load
       - run:
-          name: Rspec
-          command: bundle exec rspec
-
-orbs:
-  ruby: circleci/ruby@0.1.2 
-
-workflows:
-  version: 2.1
-  rubocop_and_rspec:
-    jobs:
-      - rubocop
-      - rspec:
-          requires:
-            - rubocop
+          name: RSpecテスト実行
+          command: docker-compose exec app bundle exec rspec
+      - run:
+          name: Rubocopテスト実行
+          command: docker-compose exec app bundle exec rubocop
+      - run:
+          name: Dockerコンテナの停止
+          command: docker-compose down
