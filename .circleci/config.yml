@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     machine:
@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: mv docker-compose.yml
+          name: docker-compose.ymlに変更
           command: |
             mv Docker-compose.yml docker-compose.yml
             mv Dockerfile dockerfile
@@ -20,9 +20,6 @@ jobs:
           keys:
             - rails-demo-{{ checksum "Gemfile.lock" }}
             - rails-demo-
-      - run:
-          name: Which bundler?
-          command: bundle -v
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -33,7 +30,7 @@ jobs:
           name: RSpecテスト実行
           command: docker-compose exec app bundle exec rspec
       - run:
-          name: Rubocopテスト実行
+          name: Run rubocop
           command: docker-compose exec app bundle exec rubocop
       - run:
           name: Dockerコンテナの停止
