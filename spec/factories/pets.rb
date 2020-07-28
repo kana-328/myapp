@@ -5,7 +5,6 @@ FactoryBot.define do
     birthday { '20191004' }
     breed { 'チワワ' }
     sex { 'オス' }
-    user_id { '1'}
     association :user
   end
 end
