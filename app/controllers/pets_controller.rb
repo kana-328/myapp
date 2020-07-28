@@ -12,7 +12,7 @@ class PetsController < ApplicationController
       redirect_to user_pet_path(id: @pet.id)
     else
       render "new"
-      flash[:danger] = '失敗しましした'
+      flash[:danger] = '失敗しました'
     end
   end
 
