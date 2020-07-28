@@ -12,15 +12,17 @@
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="姓(必須)">
+                  <%= f.text_field :firstname, class: "form-control form-control-user", 
+                  id: "exampleInputLastname", placeholder: "名" %>
                 </div>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="名">
+                   <%= f.text_field :lastname, class: "form-control form-control-user", 
+                  id: "exampleInputLastname", placeholder: "名" %>
                 </div>
               </div>
              <div class="form-group">
                 <%= f.text_field :address, class: "form-control form-control-user", 
-                id: "exampleInputAddress", placeholder: "住所(例:東京都〇〇区○-○-○)" %> <!-- autocomplete:off -->
+                id: "exampleInputAddress", placeholder: "住所(例:東京都〇〇区○-○-○)" %>
               </div>
              <div class="form-group">
                 <%= f.telephone_field:tel, class: "form-control form-control-user", 
