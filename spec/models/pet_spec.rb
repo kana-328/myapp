@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Pet, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:pet) { build(:pet) }
+
+  it "サンプルデータは正しい" do
+    expect(pet).to be_valid
+  end
 end

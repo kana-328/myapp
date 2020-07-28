@@ -5,10 +5,13 @@ default: &default
   username: postgres
   password: password
   pool: 5
+
   
 development:
   <<: *default
   database: myapp_development
+  host: localhost
+  port: 5432
 
 test:
   <<: *default
