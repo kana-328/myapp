@@ -4,10 +4,13 @@ services:
     image: postgres:12.3
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    env_file:
+      - ./.env
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - 5432:5432
+      - ${DATABASE_PORT}:5432
       
   app:
     build: .
