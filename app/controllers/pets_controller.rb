@@ -8,11 +8,11 @@ class PetsController < ApplicationController
     @pet = Pet.new(params_pet)
     @pet.user_id = @id
     if @pet.save
-      flash[:notice] = 'ペット情報登録しました'
+      flash[:notice] = 'ペット情報を登録しました'
       redirect_to user_pet_path(id: @pet.id)
     else
       render "new"
-      flash[:danger] = '失敗しました'
+      flash[:danger] = 'ペット情報の登録が失敗しました'
     end
   end
 

@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Registrations', type: :system do
-
-  let(:user){build(:user)}
+  let(:user) { build(:user) }
 
   before do
     driven_by(:rack_test)

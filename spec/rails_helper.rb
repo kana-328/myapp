@@ -68,7 +68,7 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.before(:each, type: :system) do
-    #Spec実行時、ブラウザが自動で立ち上がり挙動を確認できる
+    # Spec実行時、ブラウザが自動で立ち上がり挙動を確認できる
     # driven_by(:selenium_chrome)
     driven_by(:selenium_chrome_headless)
   end

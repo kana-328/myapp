@@ -4,7 +4,7 @@
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
         <div class="row">
-          <div class="col-lg-2 d-none d-lg-block bg-register-image"></div>
+        <div class="col-lg-2"></div> 
           <div class="col-lg-8">
             <div class="p-5">
               <div class="text-center">
@@ -22,13 +22,13 @@
                   id: "exampleInputLastname" %>
                 </div>
               </div>
-             <div class="form-group">
+              <div class="form-group">
                 <%= f.label :address, '住所'%>
                 <%= f.text_field :address, class: "form-control form-control-user", 
-                id: "exampleInputAddress", placeholder: "例:東京都〇〇区○-○-○)" %>
+                id: "exampleInputAddress", placeholder: "例:東京都〇〇区○-○-○" %>
               </div>
-             <div class="form-group">
-             <%= f.label :tel, '電話番号'%>
+              <div class="form-group">
+                <%= f.label :tel, '電話番号'%>
                 <%= f.telephone_field:tel, class: "form-control form-control-user", 
                 id: "exampleInputAddress", placeholder: "ハイフンなし" %> 
               </div>
@@ -43,16 +43,16 @@
                   <%= f.password_field :password, autocomplete: "new-password", type: "password", class: "form-control form-control-user", id: "exampleInputPassword" %>
                 </div>
                 <div class="col-sm-6">
-                <%= f.label :password_confirmation, 'パスワード確認用' %>
+                  <%= f.label :password_confirmation, 'パスワード確認用' %>
                   <%= f.password_field :password_confirmation, autocomplete: "new-password",type: "password", class: "form-control form-control-user", id: "exampleRepeatPassword" %>
                 </div>
               </div>               
                 <%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block outline"%>        
-                <hr>  
+              <hr>  
               <div class="text-center">
                 <%= render "devise/shared/links", class: "small" %>               
               </div>
-                <hr>
+              <hr>
             </div>
           </div>
         </div>

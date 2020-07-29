@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_scope :user do
     root   'users/sessions#new'
     get     '/signup',         to: 'users/registrations#new'
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  resource :static_pages,         only: [:index, :show]
+  resource :static_pages,         only: [:show]
   resources :users,    only: [:create, :destroy] do
     resources :pets, only: [:new, :show, :create, :destroy]
   end

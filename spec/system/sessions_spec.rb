@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Sessions', type: :system do
-
-  let(:user){build(:user)}
+  let(:user) { build(:user) }
 
   before do
     driven_by(:rack_test)
@@ -24,5 +23,4 @@ RSpec.describe 'Sessions', type: :system do
     expect(page).to have_content '利用規約'
     expect(page).to have_content 'パスワードを忘れた方'
   end
-
 end
