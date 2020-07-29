@@ -1,5 +1,11 @@
 
+<section class="container">
+<div class="row">
+<div class=col-3>
 <%= link_to '新規登録', new_user_registration_path %>
-<%= link_to 'ログイン', user_session_path %>
+</div>
+</div>
+<%= link_to 'ログイン(採用担当者様)', root_path %>
 <%= link_to '利用規約', static_pages_path %>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+</section>
