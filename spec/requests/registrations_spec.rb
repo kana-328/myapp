@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe 'Registrations', type: :request do
-
   describe "GET users/registrations/new" do
     before do
       get signup_path
