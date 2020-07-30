@@ -5,6 +5,9 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
+      - run:
+          name: .envをbase64形式で読み込み
+          command: echo $ENV | base64 -di > .env
       - run: echo ${ENV} > ~/.env 
       - run:
           name: docker-compose.ymlに変更
