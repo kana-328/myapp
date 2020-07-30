@@ -1,0 +1,42 @@
+<%= form_for(@pet, url: user_pets_path) do |f| %>
+  <div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-lg-2 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-8">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">ペット登録</h1>
+                <hr>
+              </div>
+                <div class="form-group">
+                  <%= f.label :birthday,'生年月日' %>
+                  <%= f.date_select :birthday, use_month_numbers: true,
+                  start_year: 2000, end_year: (Time.now.year + 0),
+                  id: "exampleInputBirhtday" %>
+                </div>
+              <div class="form-group">
+                <%= f.label :breed, '名前(必須)' %>
+                <%= f.text_field :name, class: "form-control form-control-user", 
+                id: "exampleInputName" %>
+              </div>
+             <div class="form-group">
+             <%= f.label :breed, '種類' %>
+              <%= f.select :breed, {'その他': 0,'アメリカン・コッカー・スパニエル': 1, 'イタリアン・グレーハウンド': 2, 'ウエスト・ハイランド・ホワイト・テリア': 3,'ウェルシュ・コーギー・ペンブローク': 4,'オーストラリアン・シェパード': 5, 'キャバリア・キング・チャールズ・スパニエル': 5,'グレート・ピレニーズ': 6, 'ゴールデン・レトリーバー': 7,'シェットランド・シープドッグ': 8,'シー・ズー': 9,'柴犬': 10,'ジャック・ラッセル・テリア': 11,'ダックスフンド': 12,'チワワ': 13, '狆': 14,'ドーベルマン': 15,'パグ': 16, 'パピヨン': 17,'ビーグル': 18,'ビション・フリーゼ': 19, 'プードル': 20,'ブルドッグ': 21,'フレンチ・ブルドッグ': 22,'ペキニーズ': 23,'ボーダー・コリー': 24,'ポメラニアン': 25, 'マルチーズ': 26, 'ミニチュア・シュナウザー': 27, 'ミニチュア・ピンシャー': 28,'ラブラドール・レトリーバー': 29, 'ワイアー・フォックス・テリア': 30,'ヨークシャー・テリア': 31}, { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %>
+              </div>
+              <div class="form-group">
+                <%= f.label :sex, '性別' %>
+                <%= f.select :sex, {'オス': 1, 'メス': 2}, { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputSex" } %>
+              </div>
+              <div class="form-group row">
+              </div>               
+                <%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block"%>        
+                <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

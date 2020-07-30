@@ -1,0 +1,62 @@
+<%= form_for(resource, as: resource_name, url: signup_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <div class="row">
+        <div class="col-lg-2"></div> 
+          <div class="col-lg-8">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">顧客登録</h1>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <%= f.label :firstname, '姓'%>
+                  <%= f.text_field :firstname, class: "form-control form-control-user", 
+                  id: "exampleInputFirstname"%>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.label :lastname, '名'%>
+                  <%= f.text_field :lastname, class: "form-control form-control-user", 
+                  id: "exampleInputLastname" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :address, '住所'%>
+                <%= f.text_field :address, class: "form-control form-control-user", 
+                id: "exampleInputAddress", placeholder: "例:東京都〇〇区○-○-○" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :tel, '電話番号'%>
+                <%= f.telephone_field:tel, class: "form-control form-control-user", 
+                id: "exampleInputAddress", placeholder: "ハイフンなし" %> 
+              </div>
+              <div class="form-group">
+                <%= f.label :email, 'メールアドレス'%>
+                <%= f.email_field :email,  class: "form-control form-control-user", 
+                id: "exampleInputEmail" %>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <%= f.label :password, 'パスワード(４〜６文字)'%>
+                  <%= f.password_field :password, autocomplete: "new-password", type: "password", class: "form-control form-control-user", id: "exampleInputPassword" %>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.label :password_confirmation, 'パスワード確認用' %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password",type: "password", class: "form-control form-control-user", id: "exampleRepeatPassword" %>
+                </div>
+              </div>               
+                <%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block outline"%>        
+              <hr>  
+              <div class="text-center">
+                <%= render "devise/shared/links", class: "small" %>               
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

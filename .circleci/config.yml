@@ -1,0 +1,41 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: .envをbase64形式で読み込み
+          command: echo $ENV | base64 -di > .env
+      - run: echo ${ENV} > ~/.env 
+      - run:
+          name: docker-compose.ymlに変更
+          command: |
+            mv Docker-compose.yml docker-compose.yml
+            mv Dockerfile dockerfile
+      - run:
+          name: docker-compose build
+          command: docker-compose build
+      - run:
+          name: docker-compose up
+          command: docker-compose up -d
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: docker-compose exec app bundle exec rake db:create
+      - run: docker-compose exec app bundle exec rake db:schema:load
+      - run:
+          name: RSpecテスト実行
+          command: docker-compose exec app bundle exec bin/rspec
+      - run:
+          name: Run rubocop
+          command: docker-compose exec app bundle exec rubocop
+      - run:
+          name: Dockerコンテナの停止
+          command: docker-compose down
