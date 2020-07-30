@@ -5,6 +5,7 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
+      - run: echo ${ENV} > ~/.env 
       - run:
           name: docker-compose.ymlに変更
           command: |
