@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resource :static_pages,         only: [:show]
-  resources :users,    only: [:create, :destroy] do
-    resources :pets, only: [:new, :show, :create, :destroy]
+  resources :users,    only: [:index, :show, :create, :destroy] do
+    resources :pets, only: [:new, :index, :show, :create, :destroy]
   end
 end
