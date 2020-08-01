@@ -22,7 +22,6 @@ class PetsController < ApplicationController
   end
 
   def show
-
   end
 
   def params_pet
