@@ -18,6 +18,7 @@ gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.1'
 gem 'bootstrap-honoka-rails' , '~> 4.3.1'
 gem 'jquery-rails'
+gem 'rails-controller-testing'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

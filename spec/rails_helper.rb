@@ -9,7 +9,7 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 # Add additional requires below this line. Rails is not loaded until this point!
-
+Rails.logger = Logger.new(STDOUT)
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -36,7 +36,6 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -71,5 +70,11 @@ RSpec.configure do |config|
     # Spec実行時、ブラウザが自動で立ち上がり挙動を確認できる
     # driven_by(:selenium_chrome)
     driven_by(:selenium_chrome_headless)
+  end
+
+  config.after do |example|
+    if example.metadata[:type] == :feature and example.exception.present? and example.metadata[:open_on_error] == true
+      save_and_open_page
+    end
   end
 end
