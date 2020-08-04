@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Registrations', type: :request do
-  describe "GET users/registrations/new" do
+  describe "GET new" do
 
     let(:user){ build_stubbed(:user) }
     let(:user_params) { {firstname: user.firstname,

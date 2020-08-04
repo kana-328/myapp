@@ -10,7 +10,7 @@
     <div class="col-md-5">
     <%= link_to "ペット追加登録", new_user_pet_path, class: 'btn btn-secondary' %>
     <hr> 
-    <% @user_pet.each do |pet| %>
+    <% @pets.each do |pet| %>
       <h3>名前:<%= link_to pet.name,user_pet_path(id: pet.id) %></h3>
       <h4>種類:<%= pet.breed %></h4>
       <h4>性別:<%= pet.sex %></h4>
