@@ -1,0 +1,7 @@
+<tr>
+<th scope="row"><%= link_to "#{user.firstname}"+" "+ "#{user.lastname}", user_pets_path(user_id: user.pets.first.user_id) %></th>
+  <th><%= user.address %></th>
+  <th><%= user.tel %></th>
+  <th><%= user.email %></th>
+  <th><%= user.pets.first.name %></th>
+</tr>  
