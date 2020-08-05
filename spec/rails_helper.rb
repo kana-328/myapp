@@ -66,15 +66,22 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
-  config.before(:each, type: :system) do
-    # Spec実行時、ブラウザが自動で立ち上がり挙動を確認できる
-    # driven_by(:selenium_chrome)
-    driven_by(:selenium_chrome_headless)
-  end
 
-  config.after do |example|
-    if example.metadata[:type] == :feature and example.exception.present? and example.metadata[:open_on_error] == true
-      save_and_open_page
+
+
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
+      end
     end
   end
+
+  config.before(:each, type: :system) do
+    driven_by :selenium_chorome_headless
+  end
+
+
 end

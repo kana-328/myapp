@@ -5,7 +5,11 @@ body{
 header{
   background-color: #C1E5FF;
   height: 100px;
+  padding-top: 30px;
+  font-size: larger;
 }
+
+
 
 footer{
   background-color: #C1E5FF;
@@ -33,6 +37,7 @@ footer{
   border: none;
   color: #696969;
 }
+
 .pagination>.active>a {     
   background: #C1E5FF;
   border-radius: 15px;
