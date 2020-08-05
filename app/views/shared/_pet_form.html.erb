@@ -1,0 +1,26 @@
+<div class="form-group">
+  <%= f.label :birthday,'生年月日' %>
+  <%= f.date_select :birthday, use_month_numbers: true,
+  start_year: 2000, end_year: (Time.now.year + 0),
+  id: "exampleInputBirhtday" %>
+</div>
+<div class="form-group">
+  <%= f.label :breed, '名前(必須)' %>
+  <%= f.text_field :name, class: "form-control form-control-user", 
+  id: "exampleInputName" %>
+</div>
+<div class="form-group">
+<%= f.label :breed, '種類' %>
+<%= f.select :breed, {'その他': 'MIX','アメリカン・コッカー・スパニエル': 'アメリカン・コッカー・スパニエル', 'イタリアン・グレーハウンド': 'イタリアン・グレーハウンド', 'ウエスト・ハイランド・ホワイト・テリア': 'ウエスト・ハイランド・ホワイト・テリア' ,'ウェルシュ・コーギー・ペンブローク': 'ウェルシュ・コーギー・ペンブローク','オーストラリアン・シェパード': 'オーストラリアン・シェパード', 'キャバリア・キング・チャールズ・スパニエル': 'キャバリア・キング・チャールズ・スパニエル','グレート・ピレニーズ': 'グレート・ピレニーズ', 'ゴールデン・レトリーバー': 'ゴールデン・レトリーバー', 'シェットランド・シープドッグ': 'シェットランド・シープドッグ','シー・ズー': 'シー・ズー','柴犬': '柴犬','ジャック・ラッセル・テリア': 'ジャック・ラッセル・テリア','ダックスフンド': 'ダックスフンド','チワワ': 'チワワ', '狆': '狆','ドーベルマン': 'ドーベルマン','パグ': 'パグ', 'パピヨン': 'パピヨン','ビーグル': 'ビーグル','ビション・フリーゼ': 'ビション・フリーゼ', 'プードル': 'プードル','ブルドッグ': 'ブルドッグ','フレンチ・ブルドッグ': 'フレンチ・ブルドッグ','ペキニーズ': 'ペキニーズ','ボーダー・コリー': 'ボーダー・コリー', 'ポメラニアン': 'ポメラニアン', 'マルチーズ': 'マルチーズ', 'ミニチュア・シュナウザー': 'ミニチュア・シュナウザー', 'ミニチュア・ピンシャー': 'ミニチュア・ピンシャー','ラブラドール・レトリーバー': 'ラブラドール・レトリーバー', 'ワイアー・フォックス・テリア': 'ワイアー・フォックス・テリア', 'ヨークシャー・テリア': 'ヨークシャー・テリア'}, { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %>
+<%= f.text_field :breed, class: "form-control form-control-user", 
+  id: "exampleInputName", placeholder: "その他" %>
+</div>
+<div class="form-group">
+  <%= f.label :sex, '性別' %>
+  <%= f.select :sex, {'オス': 'オス', 'メス': 'メス', '去勢済オス': '去勢済オス','避妊済メス': '避妊済メス'},
+   { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputSex" } %>
+</div>
+<div class="form-group row">
+</div>               
+<%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block"%>        
+<hr>

@@ -21,9 +21,18 @@ class PetsController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    @pet = Pet.find(params[:id])
   end
 
+  def update
+    @pet = Pet.find(params[:id])
+    @pet.update(params_pet)
+    flash[:notice] = 'ペット情報を更新しました'
+    redirect_to user_pets_path(user_id: @pet.user_id)
+  end
+
+private
   def params_pet
     params.require(:pet).permit(:name, :breed, :birthday, :sex, :user_id)
   end
