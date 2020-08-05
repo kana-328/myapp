@@ -1,9 +1,15 @@
+body{
+  margin:0;
+ }
+
 header{
   background-color: #C1E5FF;
+  height: 100px;
 }
 
 footer{
   background-color: #C1E5FF;
+  height: 100px
 }
 
 .nav-link {
@@ -21,4 +27,21 @@ footer{
 
 .links{
   color: black;
+}
+
+.pagination>li>a {          
+  border: none;
+  color: #696969;
+}
+.pagination>.active>a {     
+  background: #C1E5FF;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px;
+}
+
+.paginate{
+  margin: auto;
 }

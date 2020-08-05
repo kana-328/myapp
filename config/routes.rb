@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :users,    only: [:index, :show, :create, :destroy] do
     resources :pets, only: [:new, :index, :create] 
     end
-  resources :pets, only: [:show, :edit, :update, :destroy] do
+  resources :pets, only: [:edit, :update, :destroy] do
     resources :condition, shallow: true
   end
 end

@@ -19,6 +19,8 @@ gem 'rails-i18n', '~> 5.1'
 gem 'bootstrap-honoka-rails' , '~> 4.3.1'
 gem 'jquery-rails'
 gem 'rails-controller-testing'
+gem 'faker'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

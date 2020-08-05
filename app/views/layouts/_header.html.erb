@@ -1,5 +1,5 @@
 <header>
-  <div class="row" style="margin-bottom: 2rem;">
+  <div class="row">
     <div class="col-lg-6">
       <div class="bs-component">
         <ul class="nav nav-tabs">
@@ -19,6 +19,12 @@
             <%= link_to "データ","#" ,method: :get, class: "nav-link",:data => {:toggle=>"tab"} %>
           </li>
           <%= link_to "ログアウト", destroy_user_session_path,{ method: :delete, class: "links"} %><br />
+           <div class="float-right">
+            <%= link_to "顧客登録", signup_path, class: 'btn btn-secondary float-right .pr-1' %>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+              <span><i class="fas fa-search float-right .pr-1"></i></span>
+            </button>
+          </div>
         </ul>
       </div>
     </div>
