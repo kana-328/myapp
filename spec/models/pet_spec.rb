@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Pet, type: :model do
-  let(:pet) { build(:pet) }
+  let(:pet) { build_stubbed(:pet) }
   let(:error_pet) { build(:pet, user_id: '') }
 
   it "サンプルデータが正しい状態である" do
