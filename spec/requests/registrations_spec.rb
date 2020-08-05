@@ -3,13 +3,8 @@ RSpec.describe 'Registrations', type: :request do
   describe "GET new" do
 
     let(:user){ build_stubbed(:user) }
-    let(:user_params) { {firstname: user.firstname,
-                          email: user.email,
-                          tel: user.tel,
-                          password: user.password,
-                          password_confirmation: user.password_confirmation } }
     let(:non_user_params) { {firstname: '' } }
-
+    let(:user_params) { attributes_for(:user) }
 
     it '顧客登録画面のリクエストが成功すること' do
       get signup_path

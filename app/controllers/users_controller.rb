@@ -4,4 +4,3 @@ class UsersController < ApplicationController
     @users = @search.result.includes(:pets)
   end
 end
-

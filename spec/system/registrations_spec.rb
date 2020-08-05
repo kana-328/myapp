@@ -1,5 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Registrations', type: :system do
+
   let(:user) { build_stubbed(:user) }
 
   before do
@@ -41,7 +42,6 @@ RSpec.describe 'Registrations', type: :system do
       click_button '登録'
       expect(page).to have_content '更新しました'
     end
-
   end
 
   context 'フォームの必要な情報が空白だった時' do
@@ -59,6 +59,5 @@ RSpec.describe 'Registrations', type: :system do
       expect(page).to have_content '電話番号を入力してください'
       expect(page).to have_content '姓を入力してください'
     end
-
   end
 end
