@@ -48,6 +48,7 @@ end
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara', '~> 2.15.2'
+  gem 'launchy', '~>2.4.3'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
