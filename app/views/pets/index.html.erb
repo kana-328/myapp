@@ -13,8 +13,7 @@
     </div>
     <div class="col-md-5">
     <hr> 
-    <% @pets.each do |pet| %>
-      <h3>名前:<%= link_to pet.name,"#" %></h3>
+    <% @pets.each do |pet| %>前:<%= link_to pet.name, new_pet_condition_path(pet_id: pet.id) %></h3>
       <h4>種類:<%= pet.breed %></h4>
       <h4>性別:<%= pet.sex %></h4>
       <h4>生年月日:<%= pet.birthday %></h4>

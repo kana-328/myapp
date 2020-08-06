@@ -21,6 +21,8 @@ gem 'jquery-rails'
 gem 'rails-controller-testing'
 gem 'faker'
 gem 'kaminari'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

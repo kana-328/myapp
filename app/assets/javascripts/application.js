@@ -17,3 +17,9 @@
 //= require jquery3
 //= require bootstrap-sprockets
 //= require popper
+//= require moment 
+//= require fullcalendar
+//= require fullcalendar/locale-all
+
+$('#calendar').fullCalendar({});
+

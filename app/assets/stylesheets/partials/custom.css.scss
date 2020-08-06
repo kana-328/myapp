@@ -9,8 +9,6 @@ header{
   font-size: larger;
 }
 
-
-
 footer{
   background-color: #C1E5FF;
   height: 100px
@@ -49,4 +47,14 @@ footer{
 
 .paginate{
   margin: auto;
+}
+
+.table-bordered{
+  text-align: center;
+  font-size: x-large;
+  table-layout: fixed;
+}
+
+.table th{
+  background-color:  #C1E5FF; ;
 }
