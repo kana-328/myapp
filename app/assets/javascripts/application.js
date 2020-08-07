@@ -10,16 +10,27 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
-//= require jquery3
+//= require moment
+//= require fullcalendar
 //= require bootstrap-sprockets
 //= require popper
-//= require moment 
-//= require fullcalendar
-//= require fullcalendar/locale-all
+//= require_tree .
 
-$('#calendar').fullCalendar({});
 
+$("#calendar").fullCalendar({
+  events: [
+    {
+    title  : "event1",
+    start  : "2020-08-01"
+    },
+    {
+    title  : "event2",
+    start  : "2020-08-07",
+    end    : "2020-08-09"
+    }
+    ]
+});
