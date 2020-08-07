@@ -9,8 +9,9 @@ class ConditionsController < ApplicationController
   end
 
   def create
+    @id = params[:pet_id]
     @condition = Condition.new(params_condition)
-    raise
+    @condition.pet_id = @id
     if @condition.save
       flash[:notice] = '管理表を登録しました'
       redirect_to user_pets_path
