@@ -1,9 +1,3 @@
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-wp-preserve="%3Cscript%20src%3D'fullcalendar%2Fcore%2Flocales%2Fja.js'%3E%3C%2Fscript%3E" data-mce-resize="false" data-mce-placeholder="1" class="mce-object" width="20" height="20" alt="&lt;script&gt;" title="&lt;script&gt;" />
-<div id="calendar">
-
-</div>
-
-
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -23,41 +17,50 @@
     </div>
     <tr>
       <th scope="row">元気</th>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
+        <td><%= f.radio_button :vitality, "ある" %>ある <%= f.radio_button :vitality, "ない" %>ない
+        <td><%= f.radio_button :vitality, "ある" %>ある <%= f.radio_button :vitality, "残した" %>ない
+        <td><%= f.radio_button :vitality, "ある" %>ある <%= f.radio_button :vitality, "残した" %>ない
+       
     </tr>
     <tr>
       <th scope="row">食欲</th>
-      <td>○</td>
-      <td>×</td>
-      <td>○</td>
+        <td><%= f.radio_button :appetite, "完食" %>完食 <%= f.radio_button :appetite, "残した" %>残した<%= f.radio_button :appetite, "食べない" %>食べない</td>
+        <td><%= f.radio_button :appetite, "完食" %>完食 <%= f.radio_button :appetite, "残した" %>残した<%= f.radio_button :appetite, "食べない" %>食べない</td>
+        <td><%= f.radio_button :appetite, "完食" %>完食 <%= f.radio_button :appetite, "残した" %>残した<%= f.radio_button :appetite, "食べない" %>食べない</td>
     </tr>
     <tr>
       <th scope="row">排便</th>
-      <td>○</td>
-      <td>×</td>
-      <td>○</td>
+        <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし<%= f.radio_button :defecation, "下痢" %>下痢</td>
+        <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし<%= f.radio_button :defecation, "下痢" %>下痢</td>
+        <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし<%= f.radio_button :defecation, "下痢" %>下痢</td>
     </tr>
     <tr>
       <th scope="row">排尿</th>
-      <td>○</td>
-      <td>○</td>
-      <td>○</td>
+        <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし
+        <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし
+        <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし
     </tr>
     <tr>
       <th scope="row">嘔吐</th>
-     <td>○</td>
-      <td>×</td>
-      <td>○</td>
+        <td><%= f.radio_button :vomit, "あり" %>あり<%= f.radio_button :vomit, "なし" %>なし
+        <td><%= f.radio_button :vomit, "あり" %>あり<%= f.radio_button :vomit, "なし" %>なし
+        <td><%= f.radio_button :vomit, "あり" %>あり<%= f.radio_button :vomit, "なし" %>なし
     </tr>
     <tr>
       <th scope="row">投薬</th>
-      <td>○</td>
-      <td>なし</td>
-      <td>なし</td>
+        <td><%= f.radio_button :vomit, "済み" %>済み<%= f.radio_button :vomit, "なし" %>なし
+        <td><%= f.radio_button :vomit, "済み" %>済み<%= f.radio_button :vomit, "なし" %>なし
+        <td><%= f.radio_button :vomit, "済み" %>済み<%= f.radio_button :vomit, "なし" %>なし
     </tr>
   </tbody>
 </table>
+  <div class="form-group">
+    <%= f.label :comment, 'コメント' %>
+    <%= f.text_field :comment, class: "form-control form-control-user" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :staff, '担当者' %>
+    <%= f.select :staff, { '高橋': '高橋', '村田': '村田', '佐藤': '佐藤'} ,{ include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %>
+  </div>
 <%= f.submit "登録" , class: "btn btn-danger btn-user btn-block outline"%>
 <% end %>
