@@ -1,11 +1,12 @@
 class ConditionsController < ApplicationController
-
   def new
     @pet = Pet.find(params[:pet_id])
     @condition = Condition.new
   end
 
   def show
+    @condition = Condition.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
   end
 
   def create
@@ -14,7 +15,7 @@ class ConditionsController < ApplicationController
     @condition.pet_id = @id
     if @condition.save
       flash[:notice] = '管理表を登録しました'
-      redirect_to user_pets_path
+      redirect_to pet_condition_path(id: @condition.id)
     else
       render "new"
       flash[:danger] = '管理表の登録が失敗しました'
@@ -22,7 +23,8 @@ class ConditionsController < ApplicationController
   end
 
   private
+
   def params_condition
-    params.require(:condition).permit(:vitality, :defecation, :urination, :appetite, :vomit, :comment,:staff)
+    params.require(:condition).permit(:vitality, :defecation, :urination, :appetite, :vomit, :weight, :comment, :staff)
   end
 end
