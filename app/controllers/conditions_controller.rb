@@ -6,11 +6,13 @@ class ConditionsController < ApplicationController
 
   def show
     @condition = Condition.find(params[:id])
+ 
     @pet = Pet.find(params[:pet_id])
   end
 
   def create
     @id = params[:pet_id]
+    raise
     @condition = Condition.new(params_condition)
     @condition.pet_id = @id
     if @condition.save
@@ -25,6 +27,6 @@ class ConditionsController < ApplicationController
   private
 
   def params_condition
-    params.require(:condition).permit(:vitality, :defecation, :urination, :appetite, :vomit, :weight, :comment, :staff)
+    params.require(:condition).permit(:vitality, :defecation, :urination, :appetite, :vomit, :weight, :comment, :staff, :recorded_status)
   end
 end

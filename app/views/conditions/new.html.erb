@@ -3,61 +3,50 @@
     <tr>
       <th scope="col" ><%= @pet.name %></th>
       <th scope="col" >朝</th>
-
-
     </tr>
   </thead>
-  <%= form_for(@condition, url: pet_conditions_path ) do |f| %>
-  <%= render "devise/shared/error_messages", resource: @condition %>
-  <tbody>
-      <div class="form-group">
+     
+    <%= form_for @pet, url: pet_conditions_path, local: true do |f| %>
+    
+    <%= f.text_field :name %>
+      <%= f.fields_for :condition do |condition| %>
+    <tbody>
+    <div class="form-group">
       <%= f.label :日付, class: 'control-label' %>
       <%= f.date_select :created_at,use_month_numbers: true, end_year: (Time.now.year + 0) %>
     </div>
     <tr>
-      <th scope="row">元気</th>
-        <td><%= f.radio_button :vitality, "ある" %>ある <%= f.radio_button :vitality, "ない" %>ない
-
+      <th scope="row">時間</th>
+      <td><%= condition.radio_button :recorded_status, "朝" %>朝<%= condition.radio_button :recorded_status, "昼" %>昼<%= condition.radio_button :recorded_status, "夜" %>夜</td>
     </tr>
     <tr>
-      <th scope="row">食欲</th>
-      <td><%= f.radio_button :appetite, "完食" %>完食 <%= f.radio_button :appetite, "残した" %>残した<%= f.radio_button :appetite, "食べない" %>食べない</td>
-     
-     
+      <th scope="row">元気</th>
+        <td><%= condition.radio_button :vitality, "あり" %>あり<%= condition.radio_button :vitality, "なし" %>なし
     </tr>
     <tr>
       <th scope="row">排便</th>
-      <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし<%= f.radio_button :defecation, "下痢" %>下痢</td>
-      
+      <td><%= condition.radio_button :defecation, "あり" %>あり<%= condition.radio_button :defecation, "なし" %>なし<%= condition.radio_button :defecation, "下痢" %>下痢</td>
+    </tr>
+    <tr>
+      <th scope="row">食欲</th>
+      <td><%= condition.radio_button :appetite, "完食" %>完食 <%= condition.radio_button :appetite, "残した" %>残した<%= condition.radio_button :appetite, "食べない" %>食べない</td>
     </tr>
     <tr>
       <th scope="row">排尿</th>
-      <td><%= f.radio_button :urination, "あり" %>あり<%= f.radio_button :urination, "なし" %>なし
+      <td><%= condition.radio_button :urination, "あり" %>あり<%= condition.radio_button :urination, "なし" %>なし
     </tr>
     <tr>
       <th scope="row">嘔吐</th>
-      <td><%= f.radio_button :vomit, "あり" %>あり<%= f.radio_button :vomit, "なし" %>なし
+      <td><%= condition.radio_button :vomit, "あり" %>あり<%= condition.radio_button :vomit, "なし" %>なし
     </tr>
     <tr>
       <th scope="row">投薬</th>
-      <td><%= f.radio_button :medicine, "済み" %>済み<%= f.radio_button :medicine, "なし" %>なし
-     
+      <td><%= condition.radio_button :medicine, "済み" %>済み<%= condition.radio_button :medicine, "なし" %>なし
     </tr>
-  </tbody>
-</table>
-  <div class="form-group">
-    <div class="col-sm-2 mb-3 mb-sm-4">
-      <%= f.label :weight, '体重' %>
-      <%= f.text_field :weight, class: "form-control form-control-user" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :comment, 'コメント' %>
-    <%= f.text_field :comment, class: "form-control form-control-user" %>
-  </div>
-  <div class="form-group col-sm-2 mb-3 mb-sm-0">
-    <%= f.label :staff, '担当者' %>
-    <%= f.select :staff, { '高橋': '高橋', '村田': '村田', '佐藤': '佐藤'} ,{ include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %>
-  </div>
-<%= f.submit "登録" , class: "btn btn-danger btn-user btn-block outline"%>
+ </tbody>
+ </table>
 <% end %>
+  <%= f.submit "登録" , class: "btn btn-danger btn-user btn-block outline"%>
+ 
+<% end %>
+ 
