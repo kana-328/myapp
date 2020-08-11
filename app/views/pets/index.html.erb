@@ -18,6 +18,7 @@
       <h4>種類:<%= pet.breed %></h4>
       <h4>性別:<%= pet.sex %></h4>
       <h4>生年月日:<%= pet.birthday %></h4>
+      <%= link_to "管理表", pet_conditions_path(pet_id: pet.id), class: 'btn btn-outline-secondary' %>
       <%= link_to "ペット編集", edit_pet_path(id: pet.id), class: 'btn btn-outline-secondary' %>
       <%= link_to "ペット削除", pet_path(id: pet.id), method: :delete,
       class: 'btn btn-outline-secondary',data: { confirm: "#{pet.name}ちゃんを消してもよろしいですか?" } %>

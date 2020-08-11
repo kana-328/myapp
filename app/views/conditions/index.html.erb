@@ -1,0 +1,9 @@
+<% @conditions_by_date.each do |date,conditions| %>
+<ul>
+  <li>
+    <%= link_to date, condition_path(pet_id: @pet.id, id: conditions.first.id) %>
+  </li>
+</ul>
+  <% conditions.each do |condition| %>
+  <% end %>
+<% end %>
