@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'conditions/show'
   devise_scope :user do
     root   'users/sessions#new'
     get     '/signup',         to: 'users/registrations#new'
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
     post    '/login',          to: 'users/sessions#create'
     delete  '/logout',         to: 'users/sessions#destroy'
   end
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     resources :pets, only: [:new, :index, :create] 
     end
   resources :pets, only: [:edit, :update, :destroy] do
-    resources :conditions, only: [:new, :show, :create]
+    resources :conditions, shallow: true
   end
 end

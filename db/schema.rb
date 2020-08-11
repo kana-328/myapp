@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_022547) do
+ActiveRecord::Schema.define(version: 2020_08_10_095014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2020_08_10_022547) do
     t.string "medicine"
     t.integer "pet_id"
     t.string "recorded_status"
+    t.integer "recorded_at"
+    t.string "type"
   end
 
   create_table "pets", force: :cascade do |t|

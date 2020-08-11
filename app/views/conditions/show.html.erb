@@ -1,19 +1,11 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" ><%=  %></th>
-      <th scope="col" >朝</th>
-      <th scope="col">昼</th>
-      <th scope="col">夜</th>
+      <th scope="col" ><%= @pet.name %></th>
+      <th scope="col" ><%= @condition.recorded_at %></th>
     </tr>
   </thead>
   <tbody>
-    <div class="form-group text-center h2">
-      <%= @condition.created_at.strftime('%Y/%m/%d') %>
-    </div>
-    <tr>
-     
-    </tr>
     <tr>
       <th scope="row">食欲</th>
       <td><%= @condition.appetite %>
@@ -34,18 +26,17 @@
       <th scope="row">投薬</th>
       <td><%= @condition.medicine %>
     </tr>
+    <tr>
+      <th scope="row">体重</th>
+      <td><%= @condition.weight %>
+    </tr>
+    <tr>
+      <th scope="row">コメント</th>
+      <td><%= @condition.comment %>
+    </tr>
+    <tr>
+      <th scope="row">スタッフ</th>
+      <td><%= @condition.staff %>
+    </tr> 
   </tbody>
 </table>
-  <div class="form-group">
-    <div class="col-sm-2 mb-3 mb-sm-4">
-      体重：<%= @condition.weight %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-10 ">
-    コメント：<%= @condition.comment %>
-    </div>
-  </div>
-  <div class="form-group col-sm-2 mb-3 mb-sm-0">
-    担当スタッフ：<%= @condition.staff %>
-  </div>
