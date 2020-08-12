@@ -2,10 +2,7 @@ class ConditionsController < ApplicationController
 
   def index
     @pet = Pet.find(params[:pet_id])
-    @conditions = @pet.conditions.order(:recorded_date)
     @conditions_by_date = @pet.conditions.group_by{|condition| condition.recorded_date}
-    @search = Condition.ransack(params[:q])
-    @condition_page = @pet.conditions.page(params[:page])
   end
   
   def new
@@ -23,11 +20,24 @@ class ConditionsController < ApplicationController
     @condition.pet_id = @id
     if @condition.save
       flash[:notice] = '管理表を登録しました'
-      redirect_to condition_path(id: @condition.id, pet_id: @id)
+      redirect_to pet_conditions_path(pet_id: @condition.pet_id)
+      
     else
       render "new"
       flash[:danger] = '管理表の登録が失敗しました'
     end
+  end
+
+  def edit
+    @condition = Condition.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
+  end
+
+  def update
+    @condition = Condition.find(params[:id])
+    @condition.update(params_condition)
+    flash[:notice] = '管理表を更新しました'
+    redirect_to pet_conditions_path(pet_id: @condition.pet_id)
   end
 
   def destroy

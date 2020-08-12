@@ -1,8 +1,8 @@
-<table class="table table-bordered  table-sm">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col" ><%= @pet.name %></th>
-         <td><% condition.recorded_date %>
+         <td><%= condition.recorded_at %>
       </tr>
   </thead>
   <tbody>
@@ -21,7 +21,6 @@
     <tr>
       <th scope="row">排尿</th>
       <td><%= condition.urination %>
-      
     </tr>
     <tr>
       <th scope="row">嘔吐</th>
@@ -35,12 +34,10 @@
     <tr>
       <th scope="row">体重</th>
       <td><%= condition.weight %>
-     
     </tr>
     <tr>
       <th scope="row">コメント</th>
       <td><%= condition.comment %>
-   
     </tr>
     <tr>
       <th scope="row">スタッフ</th>
@@ -49,3 +46,4 @@
   </tbody>
 </table>
  <%= link_to "削除", condition_path(id: condition.id),{ method: :delete, class: 'btn btn-outline-secondary'} %>
+ <%= link_to "編集", edit_condition_path(pet_id: condition.pet_id, id: condition.id), class: 'btn btn-outline-secondary' %>
