@@ -1,9 +1,18 @@
+<div class="modal-body">
+    <%= search_form_for @search ,url: pet_conditions_path do |f| %>
+    <div class="form-group">
+      <%= f.label :recorded_date, '日にち' %>
+      <%= f.date_field :recorded_date_cont, class: "form-control form-control-user" %>
+    </div>
+  <div class="modal-footer">
+      <%= f.submit '検索',class: 'btn btn-secondary' %>
+      <%= link_to '検索条件のクリア', request.path %>
+    <% end %>
+  </div>
 <% @conditions_by_date.each do |date,conditions| %>
-<ul>
-  <li>
-    <%= link_to date, condition_path(pet_id: @pet.id, id: conditions.first.id) %>
-  </li>
-</ul>
-  <% conditions.each do |condition| %>
+  <h3> <%= link_to date, condition_path(pet_id: @pet.id, id: conditions.first.id) %></h3>
+  <div class="paginate">
+    <%= render partial: 'condition', collection: conditions %>
+  </div>
   <% end %>
-<% end %>
+   <%= paginate @condition_page %>

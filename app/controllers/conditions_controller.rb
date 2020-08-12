@@ -2,8 +2,10 @@ class ConditionsController < ApplicationController
 
   def index
     @pet = Pet.find(params[:pet_id])
-    conditions = @pet.conditions.order(:recorded_date)
-    @conditions_by_date = conditions.group_by{|condition| condition.recorded_date}
+    @conditions = @pet.conditions.order(:recorded_date)
+    @conditions_by_date = @pet.conditions.group_by{|condition| condition.recorded_date}
+    @search = Condition.ransack(params[:q])
+    @condition_page = @pet.conditions.page(params[:page])
   end
   
   def new
@@ -13,10 +15,6 @@ class ConditionsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:pet_id])
-    @conditions_1  = @pet.conditions.order(:recorded_date).where(recorded_at: 1)
-    @conditions_by_1 = @conditions_1.group_by{|condition| condition.recorded_date}
-    @conditions_2 = @pet.conditions.order(:recorded_date).where(recorded_at: 2)
-    #@conditions_by_2 = @conditions_2.group_by{|condition| condition.recorded_date}
   end
 
   def create
