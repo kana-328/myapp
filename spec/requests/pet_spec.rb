@@ -58,12 +58,12 @@ RSpec.describe 'Pets', type: :request do
         expect(response.status).to eq 302
       end
 
-      it "更新した値に期待する値が入っている" do
-        patch pet_path(id: pet.id), params: { pet: { name: 'test' } }
-        expect(assigns(:pet).name).to eq "test"
-      end
+    it "更新した値に期待する値が入っている" do
+      patch pet_path(id: pet.id), params: { pet: { name: 'test' } }
+      expect(assigns(:pet).name).to eq "test"
     end
   end
+end
 
   describe "DELETE pet/:id" do
     let(:user) { create(:user) }

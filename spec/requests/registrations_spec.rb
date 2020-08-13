@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe 'Registrations', type: :request do
   describe "GET new" do
     let(:user) { build_stubbed(:user) }
-    let(:non_user_params) { { firstname: '' } }
+    let(:error_user_params) { { firstname: '' } }
     let(:user_params) { attributes_for(:user) }
 
     it '顧客登録画面のリクエストが成功すること' do
@@ -31,8 +31,13 @@ RSpec.describe 'Registrations', type: :request do
     context '無効なユーザーの登録の場合' do
       it 'Userの数は変わらない' do
         expect do
-          post signup_path, params: { user: non_user_params }
+          post signup_path, params: { user: error_user_params }
         end.to change(User, :count).by(0)
+      end
+
+      it 'newページにrenderされる' do
+        post signup_path, params: { user: error_user_params }
+        expect(response).to render_template(:new)
       end
     end
   end

@@ -1,7 +1,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" ><%= @pet.name %></th>
+      <th scope="col" ><%= @condition.pet.name %></th>
     </tr>
   </thead>
     <%= form_for @condition, url: condition_path(id: @condition.id) do |f| %>

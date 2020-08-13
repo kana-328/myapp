@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    firstname { '山田' }
-    lastname { '太郎' }
-    email { 'example@email.com' }
+    firstname { "firstname" }
+    lastname { "lastname" }
+    email  { "example@example.com" }
     password { 'foobar' }
     password_confirmation { password }
     address { '〇〇県〇〇市〇〇町○-○-○' }

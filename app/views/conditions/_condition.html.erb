@@ -1,7 +1,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" ><%= @pet.name %></th>
+      <th scope="col" ><%= @condition.pet.name %></th>
          <td><%= condition.recorded_at %>
       </tr>
   </thead>
@@ -46,4 +46,4 @@
   </tbody>
 </table>
  <%= link_to "削除", condition_path(id: condition.id),{ method: :delete, class: 'btn btn-outline-secondary'} %>
- <%= link_to "編集", edit_condition_path(pet_id: condition.pet_id, id: condition.id), class: 'btn btn-outline-secondary' %>
+ <%= link_to "編集", edit_condition_path(id: condition.id), class: 'btn btn-outline-secondary' %>

@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(_user)
-    root_path # ログアウト後に遷移するpathを設定
+    root_path
   end
   
   def after_sign_in_path_for(_user)
-    users_path(resource)
+    user_pets_path(user_id: resource.id)
   end
   
 end
