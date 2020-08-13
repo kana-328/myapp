@@ -33,12 +33,13 @@ class PetsController < ApplicationController
   end
 
   def destroy
-      pet = Pet.find_by(id: params[:id]).destroy
-      flash[:notice] = 'ペットを消しました'
-      redirect_to user_pets_path(user_id: pet.user_id)
+    pet = Pet.find_by(id: params[:id]).destroy
+    flash[:notice] = 'ペットを消しました'
+    redirect_to user_pets_path(user_id: pet.user_id)
   end
 
-private
+  private
+
   def params_pet
     params.require(:pet).permit(:name, :breed, :birthday, :sex, :user_id)
   end

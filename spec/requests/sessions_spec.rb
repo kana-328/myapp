@@ -5,7 +5,7 @@ RSpec.describe 'Sessions', type: :request do
       get root_path
     end
 
-    let(:user){ create(:user) }
+    let(:user) { create(:user) }
 
     it 'ログイン画面のリクエストが成功すること' do
       expect(response.status).to eq 200

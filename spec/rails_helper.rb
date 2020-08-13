@@ -67,21 +67,18 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
 
-
-
   config.before(:each) do |example|
-      if example.metadata[:type] == :system
-        if example.metadata[:js]
-          driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
-        else
-          driven_by :rack_test
-        end
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
       end
     end
+  end
   config.after do |example|
-    if example.metadata[:type] == :system and example.exception.present? and example.metadata[:open_on_error] == true
-      save_and_open_page
+    if (example.metadata[:type] == :system) && example.exception.present? && (example.metadata[:open_on_error] == true)
+
     end
   end
-
 end

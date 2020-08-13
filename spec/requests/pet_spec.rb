@@ -1,8 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Pets', type: :request do
-
   describe "GET /users/:user_id/pets/new" do
-
     let(:user) { create(:user) }
     let(:pet) { build_stubbed(:pet, user: user) }
     let(:pet_params) { attributes_for(:pet) }
@@ -24,9 +22,9 @@ RSpec.describe 'Pets', type: :request do
 
     context '有効なpetの登録の場合' do
       it "Petの数が１増える" do
-        expect{
+        expect do
           post user_pets_path(user_id: pet.user_id), params: { pet: pet_params }
-        }.to change(Pet, :count).by(1)
+        end.to change(Pet, :count).by(1)
       end
 
       it "302レスポンスが返ってくる" do
@@ -42,7 +40,6 @@ RSpec.describe 'Pets', type: :request do
   end
 
   describe "PATCH pet/:id/edit" do
-
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
     let(:pet_params) { attributes_for(:pet) }
@@ -54,22 +51,21 @@ RSpec.describe 'Pets', type: :request do
     it '200レスポンスが返ってくる' do
       expect(response.status).to eq 200
     end
-    
-  context 'ペット情報を更新した時' do
-    
-    it "302レスポンスが返ってくる" do
-      patch pet_path(id: pet.id), params: { pet: pet_params }
-      expect(response.status).to eq 302
-    end
 
-    it "更新した値に期待する値が入っている" do
-      patch pet_path(id: pet.id), params: { pet: {name: 'test'} }
-      expect(assigns(:pet).name).to eq "test"
+    context 'ペット情報を更新した時' do
+      it "302レスポンスが返ってくる" do
+        patch pet_path(id: pet.id), params: { pet: pet_params }
+        expect(response.status).to eq 302
+      end
+
+      it "更新した値に期待する値が入っている" do
+        patch pet_path(id: pet.id), params: { pet: { name: 'test' } }
+        expect(assigns(:pet).name).to eq "test"
+      end
     end
   end
-end
-  describe "DELETE pet/:id" do
 
+  describe "DELETE pet/:id" do
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
 
@@ -79,9 +75,9 @@ end
 
     context 'ペットを削除した時' do
       it "Petの数が１減る" do
-        expect{
+        expect do
           delete pet_path(id: pet.id)
-        }.to change(Pet, :count).by(-1)
+        end.to change(Pet, :count).by(-1)
       end
 
       it 'ユーザーページにリダイレクトされる' do

@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Pets', type: :system do
   describe "GET /users/:user_id/pets" do
-
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
 
@@ -9,7 +8,7 @@ RSpec.describe 'Pets', type: :system do
       driven_by(:rack_test)
       visit user_pets_path(user_id: pet.user_id)
     end
-  
+
     it 'ペットの情報が表示されている' do
       within('div#container')
       expect(page).to have_content '生年月日'
@@ -30,15 +29,14 @@ RSpec.describe 'Pets', type: :system do
     end
 
     context "ペット削除を実行した時" do
-
       it "期待しているメッセージが表示される" do
         click_on 'ペット削除'
         expect(page).to have_content 'ペットを消しました'
       end
     end
-end
-  describe "GET /users/:user_id/pets/new" do
+  end
 
+  describe "GET /users/:user_id/pets/new" do
     let(:user) { create(:user) }
     let(:pet) { build_stubbed(:pet, user: user) }
 
@@ -46,7 +44,7 @@ end
       driven_by(:rack_test)
       visit new_user_pet_path(user_id: pet.user_id)
     end
-  
+
     it '期待しているタイトルが表示される' do
       within('div#text-center')
       expect(page).to have_content 'ペット登録'
@@ -60,9 +58,8 @@ end
       expect(page).to have_content '性別'
       expect(page).to have_content '登録'
     end
-    
-    context 'フォームの必要な情報が空白だった時' do
 
+    context 'フォームの必要な情報が空白だった時' do
       it 'バリデーションのエラーメッセージが表示される' do
         fill_in 'pet[name]', with: ""
         click_on '登録'
@@ -72,7 +69,6 @@ end
     end
 
     context 'フォームの入力が正常にされた時' do
-
       it '登録が成功し期待してるメッセージが表示される' do
         fill_in 'pet[name]', with: "pet.name"
         click_on '登録'
@@ -80,8 +76,8 @@ end
       end
     end
   end
-  describe "PUT /pets/:id" do
 
+  describe "PUT /pets/:id" do
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
 
@@ -105,7 +101,6 @@ end
     end
 
     context 'ペットの名前を変更した時' do
-
       it '期待されるメッセージと変更された名前が表示される' do
         fill_in 'pet[name]', with: "update.name"
         click_on '登録'

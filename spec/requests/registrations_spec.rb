@@ -1,9 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'Registrations', type: :request do
   describe "GET new" do
-
-    let(:user){ build_stubbed(:user) }
-    let(:non_user_params) { {firstname: '' } }
+    let(:user) { build_stubbed(:user) }
+    let(:non_user_params) { { firstname: '' } }
     let(:user_params) { attributes_for(:user) }
 
     it '顧客登録画面のリクエストが成功すること' do
@@ -13,9 +12,9 @@ RSpec.describe 'Registrations', type: :request do
 
     context '有効なユーザーの登録の場合' do
       it "Userの数が１増える" do
-        expect{
+        expect do
           post signup_path, params: { user: user_params }
-        }.to change(User, :count).by(1)
+        end.to change(User, :count).by(1)
       end
 
       it "302レスポンスが返ってくる" do
@@ -31,9 +30,9 @@ RSpec.describe 'Registrations', type: :request do
 
     context '無効なユーザーの登録の場合' do
       it 'Userの数は変わらない' do
-        expect{
+        expect do
           post signup_path, params: { user: non_user_params }
-        }.to change(User, :count).by(0)
+        end.to change(User, :count).by(0)
       end
     end
   end
