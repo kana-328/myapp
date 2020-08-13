@@ -2,7 +2,7 @@ class ConditionsController < ApplicationController
 
   def index
     @pet = Pet.find(params[:pet_id])
-    @conditions_by_date = @pet.conditions.group_by{|condition| condition.recorded_date}
+    @conditions_by_date = @pet.conditions.order(recorded_date: "DESC").group_by{|condition| condition.recorded_date}
   end
   
   def new
