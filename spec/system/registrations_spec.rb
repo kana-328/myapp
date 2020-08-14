@@ -45,7 +45,7 @@ RSpec.describe 'Registrations', type: :system do
   context 'フォームの必要な情報が空白だった時' do
     it 'バリデーションのエラーメッセージが表示される' do
       fill_in 'user[firstname]', with: ""
-       'user[lastname]', with: user.lastname
+      fill_in 'user[lastname]', with: user.lastname
       fill_in 'user[tel]', with: ""
       fill_in 'user[email]', with: ""
       fill_in 'user[address]', with: user.address

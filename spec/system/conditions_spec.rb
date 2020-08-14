@@ -4,17 +4,16 @@ RSpec.describe 'Conditions', type: :system do
   describe "GET pet_conditions" do
 
     let!(:pet) { create(:pet) }
-    let!(:condition) { build_stubbed(:condition, pet: pet) }
+    let!(:condition) { create(:condition, pet: pet) }
 
     before do
-      visit pet_conditions_path(pet_id: pet.id)
       driven_by(:rack_test)
+      visit pet_conditions_path(pet_id: pet.id)
     end
 
     it '期待しているフォームが表示されている' do
       within('div#container')
       expect(page).to have_content 'pet.name'
-      expect(page).to have_content '日付'
       expect(page).to have_content '元気'
       expect(page).to have_content '食欲'
       expect(page).to have_content '排便'
@@ -87,8 +86,8 @@ RSpec.describe 'Conditions', type: :system do
 
   describe "DELETE condition_path" do
 
-    let(:condition) { create_list(:condition,  5, pet: pet) }
-    let(:pet) { create(:pet) }
+    let!(:condition) { create(:condition, pet: pet) }
+    let!(:pet) { create(:pet) }
 
     before do
       driven_by(:rack_test)
