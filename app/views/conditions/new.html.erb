@@ -6,6 +6,7 @@
     </tr>
   </thead>
     <%= form_for @condition, url: pet_conditions_path(pet_id: @pet.id), method: :post do |f| %>
+    <%= render "devise/shared/error_messages", resource: @condition %>
     <%= render "condition_form", f: f %>
 <% end %>
  

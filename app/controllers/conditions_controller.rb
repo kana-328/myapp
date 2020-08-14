@@ -1,4 +1,5 @@
 class ConditionsController < ApplicationController
+
   def index
     @pet = Pet.find(params[:pet_id])
     @conditions_by_date = @pet.conditions.order(recorded_date: "DESC").group_by { |condition| condition.recorded_date }
@@ -7,10 +8,6 @@ class ConditionsController < ApplicationController
   def new
     @pet = Pet.find(params[:pet_id])
     @condition = Condition.new
-  end
-
-  def show
-    @pet = Pet.find(params[:pet_id])
   end
 
   def create
@@ -28,7 +25,6 @@ class ConditionsController < ApplicationController
 
   def edit
     @condition = Condition.find(params[:id])
-    #@pet = Pet.find(params[:id])
   end
 
   def update

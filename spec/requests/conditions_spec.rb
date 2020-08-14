@@ -22,12 +22,16 @@ RSpec.describe "Conditions", type: :request do
     let(:condition_params) { attributes_for(:condition) }
     let(:condition_error) { build(:condition, recorded_date: '') }
   
-
     before do
       get new_pet_condition_path(pet_id: condition.pet_id)
     end
 
     context '有効なconditionの登録の場合' do
+
+      before do
+        post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params }
+      end
+
       it "conditionの数が１増える" do
         expect do
           post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params }
@@ -35,22 +39,22 @@ RSpec.describe "Conditions", type: :request do
       end
 
       it '302レスポンスが返ってくる' do
-        post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params }
         expect(response.status).to eq 302
       end
 
       it "期待しているページにリダイレクトされる" do
-        post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params }
         expect(response).to redirect_to pet_conditions_path(pet_id: condition.pet_id)
       end
     end
 
     context '無効なconditionの登録の場合' do
+
       it "conditionの数は変わらない" do
         expect do
           post pet_conditions_path(pet_id: pet.id), params: { condition: { recorded_date: '' } }
         end.to change(Condition, :count).by(0)
       end
+
       it 'newページにrenderされる' do
         expect(response).to render_template(:new)
       end
@@ -63,32 +67,53 @@ RSpec.describe "Conditions", type: :request do
     let(:condition) { create(:condition, pet: pet) }
     let(:condition_params) { attributes_for(:condition) }
 
-    before do
-      get edit_condition_path(id: condition.id)
-    
-    end
-
     it '200レスポンスが返ってくる' do
+      get edit_condition_path(id: condition.id)
       expect(response.status).to eq 200
     end
     
     context 'ペット情報を正常に更新した時' do
 
-      it "302レスポンスが返ってくる" do
+      before do
         patch condition_path(id: condition.id), params: { condition: condition_params }
+      end
+
+      it "302レスポンスが返ってくる" do
         expect(response.status).to eq 302
       end
 
       it "期待しているページにリダイレクトされる" do
-        patch condition_path(id: condition.id), params: { condition: condition_params }
         expect(response).to redirect_to pet_conditions_path(pet_id: condition.pet_id)
       end
 
       it "更新した値に期待する値が入っている" do
         patch condition_path(id: condition.id), params: { condition: { comment: 'test' } }
-        expect(assigns(:condition).comment).to eq "test"
+        expect(assigns(:condition).comment).to include "test"
       end
     end
   end
 
+  describe "DELETE condition/:id" do
+    
+    let(:pet) { create(:pet) }
+    let!(:condition) { create(:condition, pet: pet) }
+
+    before do
+      get user_pets_path(user_id: pet.user_id)
+    end
+
+    context 'Conditionを削除した時' do
+
+      it 'ユーザーページにリダイレクトされる' do
+        delete condition_path(id: condition.id)
+        expect(response).to redirect_to pet_conditions_path(pet_id: condition.pet_id)
+      end
+
+      it "Conditionの数が１減る" do
+        expect do
+          delete condition_path(id: condition.id)
+        end.to change(Condition, :count).by(-1)
+      end
+    end
+  end
 end

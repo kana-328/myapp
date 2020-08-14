@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'Registrations', type: :request do
   describe "GET new" do
+
     let(:user) { build_stubbed(:user) }
     let(:error_user_params) { { firstname: '' } }
     let(:user_params) { attributes_for(:user) }
@@ -11,6 +12,7 @@ RSpec.describe 'Registrations', type: :request do
     end
 
     context '有効なユーザーの登録の場合' do
+
       it "Userの数が１増える" do
         expect do
           post signup_path, params: { user: user_params }
@@ -29,6 +31,7 @@ RSpec.describe 'Registrations', type: :request do
     end
 
     context '無効なユーザーの登録の場合' do
+      
       it 'Userの数は変わらない' do
         expect do
           post signup_path, params: { user: error_user_params }

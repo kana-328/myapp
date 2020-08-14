@@ -1,6 +1,8 @@
 ja:
   activerecord:
     attributes:
+      condition:
+        recoreded_date: 日付
       pet:
         name: 名前
       user:
@@ -32,6 +34,7 @@ ja:
     models:
       user: ユーザ
       pet: ペット
+      condition: 管理表
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
