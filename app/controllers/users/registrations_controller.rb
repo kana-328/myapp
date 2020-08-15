@@ -18,7 +18,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
     @user = User.find(params[:id])
   end
-
   protected
 
   def params_user

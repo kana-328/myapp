@@ -29,6 +29,7 @@ RSpec.describe 'Registrations', type: :system do
   end
 
   context 'フォームの入力が正常にされた時' do
+
     it '登録が成功し期待してるメッセージが表示される' do
       fill_in 'user[firstname]', with: user.firstname
       fill_in 'user[lastname]', with: user.lastname
@@ -43,6 +44,7 @@ RSpec.describe 'Registrations', type: :system do
   end
 
   context 'フォームの必要な情報が空白だった時' do
+    
     it 'バリデーションのエラーメッセージが表示される' do
       fill_in 'user[firstname]', with: ""
       fill_in 'user[lastname]', with: user.lastname

@@ -48,23 +48,16 @@ RSpec.describe 'Registrations', type: :request do
   describe "GET user_edit_registration_path" do
 
     let(:user) { create(:user) }
-
-    it 'ユーザー編集画面のリクエストが成功すること' do
-      sign_in user
-      get user_edit_registration_path(id: user.id)
-      expect(response.status).to eq 200
-    end
-  end
-
-  describe "PATCH user_registration_path" do
+    let(:user_params) { attributes_for(:user) }
 
     before do
       sign_in user
       get user_edit_registration_path(id: user.id)
     end
 
-    let(:user) { create(:user) }
-    let(:user_params) { attributes_for(:user) }
+    it 'ユーザー編集画面のリクエストが成功すること' do
+      expect(response.status).to eq 200
+    end
 
     context 'ユーザー情報を更新した時' do
 
@@ -86,8 +79,8 @@ RSpec.describe 'Registrations', type: :request do
   end
 
   describe "DELETE pet/:id" do
-
-    let(:user) { create(:user) }
+    
+    let!(:user) { create(:user) }
     let(:pet_params) { attributes_for(:pet) }
 
     before do
@@ -95,12 +88,6 @@ RSpec.describe 'Registrations', type: :request do
     end
 
     context 'ユーザーを削除した時' do
-
-      it "Userの数が１減る" do
-        expect do
-          delete user_registration_path(id: user.id)
-        end.to change(User, :count).by(-1)
-      end
 
       it 'ユーザーページにリダイレクトされる' do
         delete user_registration_path(id: user.id)

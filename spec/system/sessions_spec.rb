@@ -1,5 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Sessions', type: :system do
+  
   let(:user) { create(:user) }
 
   before do
@@ -25,6 +26,7 @@ RSpec.describe 'Sessions', type: :system do
   end
 
   context 'フォームの入力が正常にされた時' do
+
     it 'ログインが成功し期待してるメッセージが表示される' do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
@@ -34,6 +36,7 @@ RSpec.describe 'Sessions', type: :system do
   end
 
   context 'フォームの入力に誤りがあった時' do
+
     it 'ログインが失敗しエラーメッセージが表示される' do
       fill_in 'user[email]', with: "error"
       fill_in 'user[password]', with: "error"
