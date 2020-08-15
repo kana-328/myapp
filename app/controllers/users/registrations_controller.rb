@@ -1,10 +1,6 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :admin_user, only: :destroy
 
-  # GET /resource/sign_up
   def new
     super
   end
@@ -19,9 +15,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  private
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  protected
 
   def params_user
     params.require(:user).permit(:email, :firstname, :lastname, :address, :tel, :password, :password_confirmation)
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+
+  def after_update_path_for(resource)
+    user_pets_path(resource)
+  end
+
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 end

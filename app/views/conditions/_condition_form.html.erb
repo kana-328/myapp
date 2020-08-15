@@ -1,0 +1,49 @@
+<table class="table">
+  <tbody>
+    <div class="form-group">
+      <%= f.label :日付, class: 'control-label' %>
+      <%= f.date_select :recorded_date, use_month_numbers: true, end_year: (Time.now.year + 0) %>
+    </div>
+    <tr>
+      <th scope="row">時間(必須)</th>
+      <td><%= f.radio_button :recorded_at, '朝' %>朝<%= f.radio_button :recorded_at, '昼' %>昼<%= f.radio_button :recorded_at, '夜' %>夜</td>
+    </tr>
+    <tr>
+      <th scope="row">元気</th>
+        <td><%= f.radio_button :vitality, "あり" %>あり<%= f.radio_button :vitality, "なし" %>なし
+    </tr>
+    <tr>
+      <th scope="row">排便</th>
+      <td><%= f.radio_button :defecation, "あり" %>あり<%= f.radio_button :defecation, "なし" %>なし<%= f.radio_button :defecation, "下痢" %>下痢</td>
+    </tr>
+    <tr>
+      <th scope="row">食欲</th>
+      <td><%= f.radio_button :appetite, "完食" %>完食 <%= f.radio_button :appetite, "残した" %>残した<%= f.radio_button :appetite, "食べない" %>食べない</td>
+    </tr>
+    <tr>
+      <th scope="row">排尿</th>
+      <td><%= f.radio_button :urination, "あり" %>あり<%= f.radio_button :urination, "なし" %>なし
+    </tr>
+    <tr>
+      <th scope="row">嘔吐</th>
+      <td><%= f.radio_button :vomit, "あり" %>あり<%= f.radio_button :vomit, "なし" %>なし
+    </tr>
+    <tr>
+      <th scope="row">投薬</th>
+      <td><%= f.radio_button :medicine, "済み" %>済み<%= f.radio_button :medicine, "なし" %>なし
+    </tr>
+  </tbody>
+</table>
+<div class="col-sm-6 mb-3 mb-sm-0">
+  <%= f.label :weight, '体重'%>
+  <%= f.text_field :weight, class: "form-control form-control-user" %>
+</div>
+<div class="col-sm-6 mb-3 mb-sm-0">
+  <%= f.label :comment, 'コメント'%>
+  <%= f.text_area :comment, class: "form-control form-control-user" %>
+</div>
+<div class="form-group col-sm-6 mb-3 mb-sm-0">
+  <%= f.label :staff, 'スタッフ' %>
+  <%= f.select :staff, {'高橋': '高橋','村田': '村田', '進藤': '進藤'}, { include_blank: '選択してください'}, { class: 'form-control form-control-user' } %>
+</div>
+<%= f.submit "登録" , class: "btn btn-danger btn-user btn-block outline"%>

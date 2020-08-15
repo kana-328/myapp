@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Pet, type: :model do
-  let(:pet) { build(:pet) }
-  let(:error_pet) { build(:pet, user_id: '') }
+  let(:pet) { build_stubbed(:pet) }
 
   it "サンプルデータが正しい状態である" do
     expect(pet).to be_valid
@@ -19,6 +18,7 @@ RSpec.describe Pet, type: :model do
   end
 
   it 'user_idがないと無効な状態である' do
-    expect(error_pet).not_to be_valid
+    pet.user_id = ''
+    expect(pet).not_to be_valid
   end
 end

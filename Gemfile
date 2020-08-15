@@ -16,8 +16,13 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.1'
-gem 'bootstrap-sass','~> 3.3.7'
+gem 'bootstrap-honoka-rails' , '~> 4.3.1'
 gem 'jquery-rails'
+gem 'rails-controller-testing'
+gem 'faker'
+gem 'kaminari'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -29,6 +34,7 @@ group :development, :test do
   gem 'webdrivers'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'ransack'
 end
 
 group :development do
@@ -43,6 +49,8 @@ end
 
 group :test do
   gem 'selenium-webdriver'
+  gem 'capybara', '~> 2.15.2'
+  gem 'launchy', '~>2.4.3'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

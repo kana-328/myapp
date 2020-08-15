@@ -1,0 +1,12 @@
+<%= link_to "戻る", user_pets_path(user_id: @pet.user_id), class: 'btn btn-secondary return-btn' %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" ><%= @pet.name %></th>
+    </tr>
+  </thead>
+    <%= form_for @condition, url: pet_conditions_path(pet_id: @pet.id), method: :post do |f| %>
+    <%= render "devise/shared/error_messages", resource: @condition %>
+    <%= render "condition_form", f: f %>
+<% end %>
+ 

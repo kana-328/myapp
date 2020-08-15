@@ -4,8 +4,9 @@
     <title> <%= full_title(yield(:title)) %></title>
     <%= csp_meta_tag %>
     <%= csrf_meta_tags %>
+    <script src="https://kit.fontawesome.com/c44c517b28.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <body class="bg-gradient-primary">
+  <body>
     <%= render 'layouts/header' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

@@ -10,15 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_095536) do
+ActiveRecord::Schema.define(version: 2020_08_12_161851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "conditions", force: :cascade do |t|
+    t.string "vitality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "defecation"
+    t.string "urination"
+    t.string "appetite"
+    t.string "vomit"
+    t.float "weight"
+    t.text "comment"
+    t.string "staff"
+    t.string "medicine"
+    t.integer "pet_id"
+    t.string "recorded_at"
+    t.string "type"
+    t.date "recorded_date"
+  end
+
   create_table "pets", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.integer "age"
-    t.datetime "birthday"
+    t.date "birthday"
     t.string "breed"
     t.float "weight"
     t.datetime "created_at", null: false

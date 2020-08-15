@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :pet do
-    id { '1' }
-    name { '桃太郎' }
-    birthday { '20191004' }
-    breed { 'チワワ' }
-    sex { 'オス' }
+    name { 'pet.name' }
+    birthday { '20200101' }
+    breed { 'breed' }
+    sex { 'sex' }
     association :user
   end
 end
