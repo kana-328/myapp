@@ -22,6 +22,11 @@ class ConditionsController < ApplicationController
     end
   end
 
+  def show
+    @condition = Condition.find(params[:id])
+
+  end
+
   def edit
     @condition = Condition.find(params[:id])
   end
