@@ -1,5 +1,4 @@
 class ConditionsController < ApplicationController
-
   def index
     @pet = Pet.find(params[:pet_id])
     @conditions_by_date = @pet.conditions.order(recorded_date: "DESC").group_by { |condition| condition.recorded_date }
@@ -12,7 +11,7 @@ class ConditionsController < ApplicationController
 
   def create
     @condition = Condition.new(params_condition)
-    @condition.pet_id  =  params[:pet_id]
+    @condition.pet_id = params[:pet_id]
     if @condition.save
       flash[:notice] = '管理表を登録しました'
       redirect_to pet_conditions_path(pet_id: @condition.pet_id)

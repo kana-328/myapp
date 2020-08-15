@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Sessions', type: :request do
   describe "GET users/sessions/new" do
-    
     before do
       get root_path
     end

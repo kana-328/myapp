@@ -1,8 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Conditions', type: :system do
-
   describe "GET pet_conditions" do
-
     let!(:pet) { create(:pet) }
     let!(:condition) { create(:condition, pet: pet) }
 
@@ -28,7 +26,6 @@ RSpec.describe 'Conditions', type: :system do
   end
 
   describe "GET new_pet_condition" do
-
     before do
       driven_by(:rack_test)
       visit new_pet_condition_path(pet_id: pet.id)
@@ -48,7 +45,7 @@ RSpec.describe 'Conditions', type: :system do
 
     context 'フォームの必要な情報が入力されなかったとき時' do
       it 'バリデーションのエラーメッセージが表示され' do
-        fill_in 'condition[comment]', with: condition.comment 
+        fill_in 'condition[comment]', with: condition.comment
         click_button '登録'
         expect(page).to have_content '管理表の登録が失敗しました'
       end
@@ -56,7 +53,6 @@ RSpec.describe 'Conditions', type: :system do
   end
 
   describe "PATCH condition_path" do
-
     before do
       driven_by(:rack_test)
       visit edit_condition_path(id: condition.id)
@@ -66,7 +62,6 @@ RSpec.describe 'Conditions', type: :system do
     let(:pet) { create(:pet) }
 
     context 'フォームの必要な情報が入力された時' do
-
       it '期待しているメッセージが表示され内容が変更されている' do
         choose 'condition_recorded_at_夜'
         choose 'condition_appetite_完食'
@@ -85,7 +80,6 @@ RSpec.describe 'Conditions', type: :system do
   end
 
   describe "DELETE condition_path" do
-
     let!(:condition) { create(:condition, pet: pet) }
     let!(:pet) { create(:pet) }
 

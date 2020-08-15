@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  # before_action :admin_user, only: :destroy
+
   def new
     super
   end
@@ -13,9 +15,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  private
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def destory
+    User.find(params[:id]).destory
+    flash[:success] = 'ユーザー削除完了'
+    redirect_to users_path
+  end
+
+  protected
 
   def params_user
     params.require(:user).permit(:email, :firstname, :lastname, :address, :tel, :password, :password_confirmation)
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+
+  def after_update_path_for(resource)
+    user_pets_path(resource)
+  end
+
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 end

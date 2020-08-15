@@ -1,8 +1,6 @@
 require 'rails_helper'
 RSpec.describe "Conditions", type: :request do
-
   describe "GET new_pet_condition" do
-
     let(:pet) { create(:pet) }
     let(:condition) { build_stubbed(:condition, pet: pet) }
 
@@ -16,18 +14,16 @@ RSpec.describe "Conditions", type: :request do
   end
 
   describe "POST pet_conditions_path" do
-
     let(:pet) { create(:pet) }
     let(:condition) { build(:condition, pet: pet) }
     let(:condition_params) { attributes_for(:condition) }
     let(:condition_error) { build(:condition, recorded_date: '') }
-  
+
     before do
       get new_pet_condition_path(pet_id: condition.pet_id)
     end
 
     context '有効なconditionの登録の場合' do
-
       before do
         post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params }
       end
@@ -48,7 +44,6 @@ RSpec.describe "Conditions", type: :request do
     end
 
     context '無効なconditionの登録の場合' do
-
       it "conditionの数は変わらない" do
         expect do
           post pet_conditions_path(pet_id: pet.id), params: { condition: { recorded_date: '' } }
@@ -62,7 +57,6 @@ RSpec.describe "Conditions", type: :request do
   end
 
   describe "PATCH /conditions/:id/edit" do
-
     let(:pet) { create(:pet) }
     let(:condition) { create(:condition, pet: pet) }
     let(:condition_params) { attributes_for(:condition) }
@@ -71,9 +65,8 @@ RSpec.describe "Conditions", type: :request do
       get edit_condition_path(id: condition.id)
       expect(response.status).to eq 200
     end
-    
-    context 'ペット情報を正常に更新した時' do
 
+    context 'ペット情報を正常に更新した時' do
       before do
         patch condition_path(id: condition.id), params: { condition: condition_params }
       end
@@ -94,7 +87,6 @@ RSpec.describe "Conditions", type: :request do
   end
 
   describe "DELETE condition/:id" do
-    
     let(:pet) { create(:pet) }
     let!(:condition) { create(:condition, pet: pet) }
 
@@ -103,7 +95,6 @@ RSpec.describe "Conditions", type: :request do
     end
 
     context 'Conditionを削除した時' do
-
       it 'ユーザーページにリダイレクトされる' do
         delete condition_path(id: condition.id)
         expect(response).to redirect_to pet_conditions_path(pet_id: condition.pet_id)
