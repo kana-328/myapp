@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :admin_user, only: :destroy
+   before_action :admin_user, only: :destroy
 
   def new
     super
@@ -17,12 +17,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
     @user = User.find(params[:id])
-  end
-
-  def destory
-    User.find(params[:id]).destory
-    flash[:success] = 'ユーザー削除完了'
-    redirect_to users_path
   end
 
   protected

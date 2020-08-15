@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'Registrations', type: :request do
-  describe "GET new" do
+  describe "GET signup_path" do
+
     let(:user) { build_stubbed(:user) }
     let(:error_user_params) { { firstname: '' } }
     let(:user_params) { attributes_for(:user) }
@@ -11,6 +12,7 @@ RSpec.describe 'Registrations', type: :request do
     end
 
     context '有効なユーザーの登録の場合' do
+
       it "Userの数が１増える" do
         expect do
           post signup_path, params: { user: user_params }
@@ -29,6 +31,7 @@ RSpec.describe 'Registrations', type: :request do
     end
 
     context '無効なユーザーの登録の場合' do
+
       it 'Userの数は変わらない' do
         expect do
           post signup_path, params: { user: error_user_params }
@@ -43,19 +46,28 @@ RSpec.describe 'Registrations', type: :request do
   end
 
   describe "GET user_edit_registration_path" do
+
     let(:user) { create(:user) }
-    let(:user_params) { attributes_for(:user) }
+
+    it 'ユーザー編集画面のリクエストが成功すること' do
+      sign_in user
+      get user_edit_registration_path(id: user.id)
+      expect(response.status).to eq 200
+    end
+  end
+
+  describe "PATCH user_registration_path" do
 
     before do
       sign_in user
       get user_edit_registration_path(id: user.id)
     end
 
-    it 'ユーザー編集画面のリクエストが成功すること' do
-      expect(response.status).to eq 200
-    end
+    let(:user) { create(:user) }
+    let(:user_params) { attributes_for(:user) }
 
     context 'ユーザー情報を更新した時' do
+
       it "302レスポンスが返ってくる" do
         patch users_registration_path(id: user.id), params: { user: user_params }
         expect(response.status).to eq 302
@@ -74,8 +86,8 @@ RSpec.describe 'Registrations', type: :request do
   end
 
   describe "DELETE pet/:id" do
+
     let(:user) { create(:user) }
-    # let(:pet) { create(:pet, user: user) }
     let(:pet_params) { attributes_for(:pet) }
 
     before do
@@ -83,6 +95,7 @@ RSpec.describe 'Registrations', type: :request do
     end
 
     context 'ユーザーを削除した時' do
+
       it "Userの数が１減る" do
         expect do
           delete user_registration_path(id: user.id)

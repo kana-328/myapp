@@ -9,27 +9,27 @@
       </div>
       <div class="modal-body">
         <%= search_form_for search do |f| %>
-        <div class="form-group">
-          <%= f.label :firstname, "姓" %>
-          <%= f.search_field :firstname_cont,class: "form-control form-control-user" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :lastname, "名" %>
-          <%= f.search_field :lastname_cont,class: "form-control form-control-user" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :tel, "電話番号" %>
-          <%= f.search_field :tel_cont,class: "form-control form-control-user" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :name, "ペット名前" %>
-          <%= f.search_field :pets_name_cont,class: "form-control form-control-user" %>
-        </div>
-      <div class="modal-footer">
-          <%= f.submit '検索',class: 'btn btn-secondary' %>
-          <%= link_to '検索条件のクリア', request.path %>
+          <div class="form-group">
+            <%= f.label :firstname, "姓" %>
+            <%= f.search_field :firstname_cont,class: "form-control form-control-user" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :lastname, "名" %>
+            <%= f.search_field :lastname_cont,class: "form-control form-control-user" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :tel, "電話番号" %>
+            <%= f.search_field :tel_cont,class: "form-control form-control-user" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, "ペット名前" %>
+            <%= f.search_field :pets_name_cont,class: "form-control form-control-user" %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit '検索',class: 'btn btn-secondary' %>
+            <%= link_to '検索条件のクリア', request.path %>
+          </div>
         <% end %>
-      </div>
       </div>
     </div>
   </div>

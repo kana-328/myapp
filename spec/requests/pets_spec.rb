@@ -1,9 +1,10 @@
 require 'rails_helper'
 RSpec.describe 'Pets', type: :request do
+
   describe "GET /users/:user_id/pets/new" do
+
     let(:user) { create(:user) }
     let(:pet) { build_stubbed(:pet, user: user) }
-    let(:pet_params) { attributes_for(:pet) }
 
     it '顧客登録画面のリクエストが成功すること' do
       get new_user_pet_path(user_id: pet.user_id)
@@ -12,6 +13,7 @@ RSpec.describe 'Pets', type: :request do
   end
 
   describe "POST /users/:user_id/pets" do
+
     let(:user) { create(:user) }
     let(:pet) { build_stubbed(:pet, user: user) }
     let(:pet_params) { attributes_for(:pet) }
@@ -21,6 +23,7 @@ RSpec.describe 'Pets', type: :request do
     end
 
     context '有効なpetの登録の場合' do
+
       it "Petの数が１増える" do
         expect do
           post user_pets_path(user_id: pet.user_id), params: { pet: pet_params }
@@ -71,6 +74,7 @@ RSpec.describe 'Pets', type: :request do
   end
 
   describe "DELETE pet/:id" do
+
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
     let(:condition_params) { attributes_for(:condition) }
@@ -80,6 +84,7 @@ RSpec.describe 'Pets', type: :request do
     end
 
     context 'ペットを削除した時' do
+
       it "Petの数が１減る" do
         expect do
           delete pet_path(id: pet.id)
