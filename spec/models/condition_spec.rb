@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe Condition, type: :model do
-  
   let(:condition) { build_stubbed(:condition) }
 
   it "サンプルデータが正しい状態である" do

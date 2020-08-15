@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Pets', type: :system do
   describe "GET /users/:user_id/pets" do
-    
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
 
@@ -30,7 +29,6 @@ RSpec.describe 'Pets', type: :system do
     end
 
     context "ペット削除を実行した時" do
-
       it "期待しているメッセージが表示される" do
         click_on 'ペット削除'
         expect(page).to have_content 'ペットを消しました'
@@ -39,7 +37,6 @@ RSpec.describe 'Pets', type: :system do
   end
 
   describe "GET /users/:user_id/pets/new" do
-
     let(:user) { create(:user) }
     let(:pet) { build_stubbed(:pet, user: user) }
 
@@ -63,7 +60,6 @@ RSpec.describe 'Pets', type: :system do
     end
 
     context 'フォームの必要な情報が空白だった時' do
-
       it 'バリデーションのエラーメッセージが表示される' do
         fill_in 'pet[name]', with: ""
         click_on '登録'
@@ -73,7 +69,6 @@ RSpec.describe 'Pets', type: :system do
     end
 
     context 'フォームの入力が正常にされた時' do
-
       it '登録が成功し期待してるメッセージが表示される' do
         fill_in 'pet[name]', with: "pet.name"
         click_on '登録'
@@ -83,7 +78,6 @@ RSpec.describe 'Pets', type: :system do
   end
 
   describe "PUT /pets/:id" do
-
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
 
@@ -107,7 +101,6 @@ RSpec.describe 'Pets', type: :system do
     end
 
     context 'ペットの名前を変更した時' do
-
       it '期待されるメッセージと変更された名前が表示される' do
         fill_in 'pet[name]', with: "update.name"
         click_on '登録'

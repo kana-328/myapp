@@ -72,7 +72,6 @@ RSpec.describe User, type: :model do
   end
 
   context 'passwordとpassword_confirmationが異なる場合' do
-    
     it '無効な状態である' do
       user.password = 'pass'
       user.password_confirmation = 'word'
@@ -81,7 +80,6 @@ RSpec.describe User, type: :model do
   end
 
   context 'passwordとpassword_confirmationが同一な場合' do
-
     it '有効な状態である' do
       user.password = 'pass'
       user.password_confirmation = 'pass'
