@@ -6,7 +6,7 @@ var myChart = new Chart(ctx, {
     labels: gon.recorded_date,
     datasets: [{
       label: '体重',
-      data: gon.condition,
+      data: gon.weight,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
       ],
@@ -16,7 +16,6 @@ var myChart = new Chart(ctx, {
       borderWidth: 1
     }]
   },
-  
   options: {
     scales: {
       yAxes: [{

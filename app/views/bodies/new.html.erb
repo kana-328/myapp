@@ -1,7 +1,17 @@
-<%= form_for(@body, url: pet_bodies_path(pet_id: @pet.id)) do |f| %>
-<%= f.label :体重 %>
-<%= f.number_field :weight, step: '0.1' %>
-<%= f.submit "登録" , class: "btn btn-danger btn-user btn-block outline" %>
+<div id="weigth-form">
+  <div class="text-center">
+   <h3 class="h4 text-gray-900 mb-4"><%= @pet.name %>ちゃん</h3>
+  </div>
+<%= form_for(@body, url: pet_bodies_path(pet_id: @pet.id),remote: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :日付, class: 'control-label' %>
+    <%= f.date_select :recorded_date, use_month_numbers: true, end_year: (Time.now.year + 0) %>
+  </div>
+    <%= f.label :体重 %>
+    <%= f.number_field :weight, step: '0.1' %>kg
+    <%= f.submit "登録" , class: "btn btn-danger outline" %>
 <% end %>
-
+</div>
 <canvas id="myChart" width="150" height="80"></canvas>
+
+

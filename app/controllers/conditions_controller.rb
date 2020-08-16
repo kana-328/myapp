@@ -1,5 +1,5 @@
 class ConditionsController < ApplicationController
-  
+
   def index
     @pet = Pet.find(params[:pet_id])
     @conditions_by_date = @pet.conditions.order(created_at: "DESC").group_by { |condition| condition.recorded_date }
@@ -24,22 +24,19 @@ class ConditionsController < ApplicationController
     end
   end
 
-  def show
-    @condition = Condition.find(params[:id])
-    @pet = Pet.find(params[:pet_id])
-    gon.condition = Condition.where(pet_id: @pet.id).pluck(:weight)
-    gon.recorded_date = Condition.where(pet_id: @pet.id).pluck(:recorded_date)
-  end
-
   def edit
     @condition = Condition.find(params[:id])
   end
 
   def update
     @condition = Condition.find(params[:id])
-    @condition.update(params_condition)
-    flash[:notice] = '管理表を更新しました'
-    redirect_to pet_conditions_path(pet_id: @condition.pet_id)
+    if @condition.update(params_condition)
+      flash[:notice] = '管理表を更新しました'
+      redirect_to pet_conditions_path(pet_id: @condition.pet_id)    
+    else
+      flash[:notice] = "失敗しました"
+      redirect_to edit_condition_path(id: condition_path)
+    end
   end
 
   def destroy

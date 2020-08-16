@@ -22,6 +22,6 @@ Rails.application.routes.draw do
     end
   resources :pets, only: [:edit, :update, :destroy] do
     resources :conditions, shallow: true
-    resources :bodies, only: [:new, :show, :create, :destroy]
+    resources :bodies, only: [:new, :create, :destroy]
   end
 end
