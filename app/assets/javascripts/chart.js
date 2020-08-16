@@ -1,12 +1,12 @@
-
+document.addEventListener("turbolinks:load",function () {
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["赤", "青", "黄色", "緑", "紫", "橙"],
+    labels: gon.recorded_date,
     datasets: [{
       label: '体重',
-      data: [12, 19, 3, 5, 2, 3],
+      data: gon.condition,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
       ],
@@ -26,3 +26,4 @@ var myChart = new Chart(ctx, {
     }
   }
 });
+})

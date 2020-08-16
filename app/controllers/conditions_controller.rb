@@ -1,7 +1,7 @@
 class ConditionsController < ApplicationController
   def index
     @pet = Pet.find(params[:pet_id])
-    @conditions_by_date = @pet.conditions.order(recorded_date: "DESC").group_by { |condition| condition.recorded_date }
+    @conditions_by_date = @pet.conditions.order(created_at: "DESC").group_by { |condition| condition.recorded_date }
   end
 
   def new
@@ -24,7 +24,9 @@ class ConditionsController < ApplicationController
 
   def show
     @condition = Condition.find(params[:id])
-
+    @pet = Pet.find(params[:pet_id])
+    gon.condition = Condition.where(pet_id: @pet.id).pluck(:weight)
+    gon.recorded_date = Condition.where(pet_id: @pet.id).pluck(:recorded_date)
   end
 
   def edit
