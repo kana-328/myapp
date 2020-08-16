@@ -1,4 +1,5 @@
 class ConditionsController < ApplicationController
+  
   def index
     @pet = Pet.find(params[:pet_id])
     @conditions_by_date = @pet.conditions.order(created_at: "DESC").group_by { |condition| condition.recorded_date }
@@ -17,6 +18,7 @@ class ConditionsController < ApplicationController
       redirect_to pet_conditions_path(pet_id: @condition.pet_id)
     else
       @pet = Pet.find(params[:pet_id])
+      @condition = Condition.new(params_condition) 
       flash[:notice] = '管理表の登録が失敗しました'
       render "new"
     end
