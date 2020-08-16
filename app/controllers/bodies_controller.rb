@@ -10,13 +10,9 @@ class BodiesController < ApplicationController
   def create
     @body = Body.new(params_bodies)
     @body.pet_id = params[:pet_id]
-    if @body.save
-      flash[:success] = '更新しました'
+    @body.save
+      flash[:notice] = '更新しました'
       redirect_to request.referrer || root_path
-    else
-      flash[:notice] = '失敗しました'
-      render 'new'
-    end
   end
 
   private
