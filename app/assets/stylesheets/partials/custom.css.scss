@@ -63,3 +63,15 @@ footer{
   float: right;
   margin-right: 20px;
 }
+
+.flexbox {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  width:100%;
+}
+
+.item { 
+  margin: 0 20px 20px 10px;
+  width: calc((100% - 100px) / 3);
+}

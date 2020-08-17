@@ -1,32 +1,29 @@
 <%= link_to "戻る", users_path, class: 'btn btn-outline-secondary return-btn' %>
 <div class="container">
   <%= link_to "ペット追加登録", new_user_pet_path, class: 'btn btn-secondary' %>
+  <%= link_to "ユーザー編集", user_edit_registration_path(id: @user.id), class: 'btn btn-warning' %>
   <h2 class="my-4"><%= @user.firstname %>さま</h2>
-  <div class="row">
-    <div class="col-md-7">
-      <h3>名前:</h3><h4><%= @user.firstname %> <%= @user.lastname %></h4>
-       <hr> 
-      <h3>電話番号:</h3><h4><%= @user.tel %></h4>
-       <hr> 
-      <h3>住所:</h3><h4><%= @user.address %></h4>
-       <hr> 
-      <h3>アドレス:</h3><h4><%= @user.email %></h4>
-      <%= link_to "ユーザー編集", user_edit_registration_path(id: @user.id), class: 'btn btn-warning' %>
-    </div>
-    <div class="col-md-5">
-    <hr> 
-      <% @pets.each do |pet| %>
-        <h3>名前:<%= link_to pet.name, new_pet_condition_path(pet_id: pet.id),data: {"turbolinks" => false } %></h3>
-        <h4>種類:<%= pet.breed %></h4>
-        <h4>性別:<%= pet.sex %></h4>
-        <h4>生年月日:<%= pet.birthday %></h4>
-        <%= link_to "管理表", pet_conditions_path(pet_id: pet.id),  class: 'btn btn-primary' %>
-        <%= link_to "ペット編集", edit_pet_path(id: pet.id), class: 'btn btn-warning' %>
-        <%= link_to "ペット削除", pet_path(id: pet.id), method: :delete,
-        class: 'btn btn-danger',data: { confirm: "#{pet.name}ちゃんを消してもよろしいですか?" } %>
-        <%= link_to '体重管理',new_pet_body_path(pet_id: pet.id), class: 'btn btn-warning' %>
-        <hr> 
-      <% end %>
-    </div>
+  <h5>名前:<%= @user.firstname %> <%= @user.lastname %></h5>
+  <hr> 
+  <h5>電話番号:<%= @user.tel %></h5>
+  <hr> 
+  <h5>住所:<%= @user.address %></h5>
+  <hr> 
+  <h5>アドレス:<%= @user.email %></h5>
+  <hr> 
+</div>
+<div class="flexbox"> 
+  <% @pets.each do |pet| %>
+  <div class="item">
+    <h3>名前:<%= link_to pet.name, new_pet_condition_path(pet_id: pet.id),data: {"turbolinks" => false } %></h3>
+    <h4>種類:<%= pet.breed %></h4>
+    <h4>性別:<%= pet.sex %></h4>
+    <h4>生年月日:<%= pet.birthday %></h4>
+    <%= link_to "管理表", pet_conditions_path(pet_id: pet.id),  class: 'btn btn-primary' %>
+    <%= link_to '体重記入',new_pet_body_path(pet_id: pet.id), class: 'btn btn-info' %>
+    <%= link_to "ペット編集", edit_pet_path(id: pet.id), class: 'btn btn-warning' %>
+    <%= link_to "ペット削除", pet_path(id: pet.id), method: :delete,
+    class: 'btn btn-danger',data: { confirm: "#{pet.name}ちゃんを消してもよろしいですか?" } %>
   </div>
+  <% end %>
 </div>

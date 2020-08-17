@@ -1,7 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'Conditions', type: :system do
+  
   describe "GET new_pet_body" do
-    
+
     let(:body) { build_stubbed(:body, pet: pet) }
     let(:pet) { create(:pet) }
 

@@ -1,6 +1,6 @@
 <div id="weigth-form">
   <div class="text-center">
-   <h3 class="h4 text-gray-900 mb-4"><%= @pet.name %>ちゃん</h3>
+    <h3 class="h4 text-gray-900 mb-4"><%= @pet.name %>ちゃん</h3>
   </div>
 <%= form_for(@body, url: pet_bodies_path(pet_id: @pet.id),remote: true) do |f| %>
   <div class="form-group">
