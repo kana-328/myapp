@@ -24,6 +24,8 @@ gem 'kaminari'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'gon',  '~> 6.2.0'
+gem 'cancancan'
+gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
