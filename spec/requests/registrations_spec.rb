@@ -87,9 +87,20 @@ RSpec.describe 'Registrations', type: :request do
         expect(response).to redirect_to root_path
       end
 
+      it "Userの数が１減る" do
+        expect do
+          delete users_registration_path(id: user.id)
+        end.to change(User, :count).by(-1)
+      end
+
       it "conditionも一緒に消える" do
         user.pets.create(pet_params)
         expect { user.destroy }.to change(Pet, :count).by(-1)
+      end
+      
+      it 'ユーザーページにリダイレクトされる' do
+        delete user_registration_path(id: user.id)
+        expect(response).to redirect_to root_path
       end
     end
   end

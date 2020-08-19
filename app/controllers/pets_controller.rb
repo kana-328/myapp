@@ -16,7 +16,7 @@ class PetsController < ApplicationController
       flash[:notice] = 'ペット情報を登録しました'
       redirect_to user_pets_path
     else
-      @condition = Pet.new(params_pet) 
+      @condition = Pet.new(params_pet)
       render "new"
       flash[:danger] = 'ペット情報の登録が失敗しました'
     end

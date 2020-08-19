@@ -1,5 +1,4 @@
 class BodiesController < ApplicationController
-
   def new
     @body = Body.new
     @pet = Pet.find(params[:pet_id])
@@ -11,8 +10,8 @@ class BodiesController < ApplicationController
     @body = Body.new(params_bodies)
     @body.pet_id = params[:pet_id]
     @body.save
-      flash[:notice] = '更新しました'
-      redirect_to request.referrer || root_path
+    flash[:notice] = '更新しました'
+    redirect_to request.referrer || root_path
   end
 
   private

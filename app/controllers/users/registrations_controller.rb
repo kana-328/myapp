@@ -1,10 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :admin_user, only: :destroy
-
-  def new
-    super
-  end
-
+  prepend_before_action :require_no_authentication, only: [:cancel]
+  before_action :current_user_is_admin?
   def create
     @user = User.new(params_user)
     if @user.save
@@ -33,7 +29,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user_pets_path(resource)
   end
 
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
+  def current_user_is_admin?
+    unless current_user.admin?
+      redirect_to root_path
+    end
   end
 end

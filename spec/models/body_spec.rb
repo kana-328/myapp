@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Body, type: :model do
-
   let(:body) { build_stubbed(:body) }
 
   it "サンプルデータが正しい状態である" do
