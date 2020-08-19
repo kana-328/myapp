@@ -27,10 +27,12 @@
             <% end %>
           </tbody>
         </table>
+        
       </div>
     </div>
   </div>
   <div class="paginate">
     <%= paginate @users %>
   </div>
+  <%= link_to 'エクスポート', users_path(format: :csv), class: 'btn btn-primaru md-3' %>
 </section>

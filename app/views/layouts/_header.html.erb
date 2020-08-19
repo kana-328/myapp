@@ -4,35 +4,25 @@
       <div class="bs-component">
         <ul class="nav nav-tabs">
           <li class="nav-item">
-           <%= link_to "userログアウト", logout_path,{ method: :delete, class: "links"} %><br />
             <%= link_to "ホーム", root_path, method: :get, class: "nav-link",:data => {:toggle=>"tab"} %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "今日のお泊まり","#" ,method: :get, class: "nav-link",:data => {:toggle=>"tab"} %>
           </li>
           <li>
             <button type="button" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
               <span><i class="fas fa-search fa-2x"></i></span>
-            </button>
-        <% if current_user.try(:admin?) %>
+            </button>     
           <li class="nav-item">
-            <%= link_to "顧客一覧", users_path,method: :get, class: "nav-link",:data => {:toggle=>"tab"} %>
+            <%= link_to "ユーザー登録", signup_path, class: 'nav-link' %>
+            <%= link_to "一覧", users_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "顧客登録", signup_path, class: 'nav-link' %>
+            <%= link_to "スケジュール表", signup_path, class: 'nav-link' %>
+            <%= link_to "一覧", users_path, class: 'nav-link' %>
           </li>
-          <li class="nav-item">
-            <%= link_to "予約表","#" ,method: :get, class: "nav-link",:data => {:toggle=>"tab"} %>
-          </li>
-        
           <li class="nav-item setting">
             <%= link_to rails_admin_path, :method => :get do %>
               <i class="fas fa-cogs fa-2x"></i>
-              
-            <% end %>
+               <%= link_to "userログアウト", logout_path,{ method: :delete, class: "links"} %><br />
           </li>
-          <% else %>
-          
           <% end %> 
         </ul>
       </div>
