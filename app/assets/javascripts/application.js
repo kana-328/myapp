@@ -20,17 +20,22 @@
 //= require popper
 //= require_tree .
 
-
+document.addEventListener("turbolinks:load",function () {
 $("#calendar").fullCalendar({
   events: [
     {
-    title  : "event1",
-    start  : "2020-08-01"
-    },
-    {
-    title  : "event2",
-    start  : "2020-08-07",
-    end    : "2020-08-09"
+      title: 'My Event',
+      start: '2020-08-30',
+      url: 'http://google.com/'
     }
-    ]
+    // other events here
+  ],
+  eventClick: function(info) {
+    info.jsEvent.preventDefault(); // don't let the browser navigate
+
+    if (info.event.url) {
+      window.open(info.event.url);
+    }
+  }
+});
 });

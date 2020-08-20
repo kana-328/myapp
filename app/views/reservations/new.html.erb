@@ -1,2 +1,12 @@
-<h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+<%= form_for @reservation, url: pet_reservations_path(pet_id: @pet.id) do |f| %>
+  <%= f.label :title, '予約名' %>
+  <%= f.select :title, {'ホテル':'ホテル' , '入院': '入院', 'しつけ': 'しつけ'} , { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %>
+  <%= f.label :start, 'IN' %>
+  <%= f.date_select :start, use_month_numbers: true, end_year: (Time.now.year + 1) %>
+  <%= f.label :end, 'OUT' %>
+  <%= f.date_select :end, use_month_numbers: true, end_year: (Time.now.year + 1) %>
+  <%= hidden_field_tag :pet_id, @pet.id %>
+<div>
+  <%= f.submit '登録', class: 'btn btn-primary' %>
+</div>
+<% end %>
