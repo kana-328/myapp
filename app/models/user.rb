@@ -26,15 +26,16 @@ class User < ApplicationRecord
     result
   end
 
- def self.csv_attributes
+  def self.csv_attributes
     %w(firstname lastname address email tel)
- end
- def self.generate_csv
-   CSV.generate(headers: true) do |csv|
-     csv << csv_attributes
-     all.each do |task|
-       csv << csv_attributes.map{ |attr| task.send(attr) }
-     end
-   end
- end
+  end
+
+  def self.generate_csv
+    CSV.generate(headers: true) do |csv|
+      csv << csv_attributes
+      all.each do |task|
+        csv << csv_attributes.map { |attr| task.send(attr) }
+      end
+    end
+  end
 end

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @users = @search.result.includes(:pets).page(params[:page])
     respond_to do |format|
       format.html
-      format.csv { send_data @users.generate_csv, filename: "users-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+      format.csv { send_data @users.generate_csv, filename: "users-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end
 end

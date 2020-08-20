@@ -101,7 +101,7 @@ RSpec.describe 'Registrations', type: :request do
 
       it 'userがusers_pathから削除されている' do
         delete user_registration_path(user)
-        expect(response.body).to_not include user
+        expect(response.body).not_to include user
       end
     end
   end

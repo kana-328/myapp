@@ -12,7 +12,7 @@ class Condition < ApplicationRecord
     CSV.generate(headers: true) do |csv|
       csv << csv_attributes
       all.each do |condition|
-        csv << csv_attributes.map{ |attr| condition.send(attr) }
+        csv << csv_attributes.map { |attr| condition.send(attr) }
       end
     end
   end

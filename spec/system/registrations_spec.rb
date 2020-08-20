@@ -59,27 +59,28 @@ RSpec.describe 'Registrations', type: :system do
       end
     end
   end
-  describe "delete users_registration_path" do
 
+  describe "delete users_registration_path" do
     let(:user) { create(:user) }
     let(:admin) { create(:admin) }
+
     before do
       driven_by(:rack_test)
     end
 
     context 'adminではない時' do
       it 'アカウント削除ボタンが表示されない' do
-         sign_in user
-         visit user_edit_registration_path(id: user.id)
-         expect(page).to_not have_content "ユーザー削除"
+        sign_in user
+        visit user_edit_registration_path(id: user.id)
+        expect(page).not_to have_content "ユーザー削除"
       end
     end
 
     context 'adminの場合' do
       it 'アカウント削除ボタンが表示される' do
-         sign_in admin
-         visit user_edit_registration_path(id: user.id)
-         expect(page).to have_content "ユーザー削除"
+        sign_in admin
+        visit user_edit_registration_path(id: user.id)
+        expect(page).to have_content "ユーザー削除"
       end
     end
   end

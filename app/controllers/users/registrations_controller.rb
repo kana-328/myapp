@@ -16,12 +16,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-  @user = User.find_by(id: params[:id])
-  @user.destroy
-  redirect_to users_path
-  flash[:notice] = 'ユーザーを削除しました'   
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    redirect_to users_path
+    flash[:notice] = 'ユーザーを削除しました'
   end
-  
+
   protected
 
   def params_user
