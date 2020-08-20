@@ -2,6 +2,10 @@ class ConditionsController < ApplicationController
   def index
     @pet = Pet.find(params[:pet_id])
     @conditions_by_date = @pet.conditions.order(created_at: "DESC").group_by { |condition| condition.recorded_date }
+    respond_to do |format|
+      format.html
+      format.csv { send_data @pet.conditions.generate_csv, filename: "conditions-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    end
   end
 
   def new
