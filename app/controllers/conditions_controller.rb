@@ -1,7 +1,11 @@
 class ConditionsController < ApplicationController
   def index
     @pet = Pet.find(params[:pet_id])
-    @conditions_by_date = @pet.conditions.order(recorded_date: "DESC").group_by { |condition| condition.recorded_date }
+    @conditions_by_date = @pet.conditions.order(created_at: "DESC").group_by { |condition| condition.recorded_date }
+    respond_to do |format|
+      format.html
+      format.csv { send_data @pet.conditions.generate_csv, filename: "conditions-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+    end
   end
 
   def new
@@ -17,6 +21,7 @@ class ConditionsController < ApplicationController
       redirect_to pet_conditions_path(pet_id: @condition.pet_id)
     else
       @pet = Pet.find(params[:pet_id])
+      @condition = Condition.new(params_condition)
       flash[:notice] = '管理表の登録が失敗しました'
       render "new"
     end
@@ -28,9 +33,13 @@ class ConditionsController < ApplicationController
 
   def update
     @condition = Condition.find(params[:id])
-    @condition.update(params_condition)
-    flash[:notice] = '管理表を更新しました'
-    redirect_to pet_conditions_path(pet_id: @condition.pet_id)
+    if @condition.update(params_condition)
+      flash[:notice] = '管理表を更新しました'
+      redirect_to pet_conditions_path(pet_id: @condition.pet_id)
+    else
+      flash[:notice] = "失敗しました"
+      redirect_to edit_condition_path(id: condition_path)
+    end
   end
 
   def destroy

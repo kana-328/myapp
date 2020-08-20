@@ -16,6 +16,7 @@ class PetsController < ApplicationController
       flash[:notice] = 'ペット情報を登録しました'
       redirect_to user_pets_path
     else
+      @condition = Pet.new(params_pet)
       render "new"
       flash[:danger] = 'ペット情報の登録が失敗しました'
     end
@@ -27,9 +28,13 @@ class PetsController < ApplicationController
 
   def update
     @pet = Pet.find(params[:id])
-    @pet.update(params_pet)
-    flash[:notice] = 'ペット情報を更新しました'
-    redirect_to user_pets_path(user_id: @pet.user_id)
+    if @pet.update(params_pet)
+      flash[:notice] = 'ペット情報を更新しました'
+      redirect_to user_pets_path(user_id: @pet.user_id)
+    else
+      flash[:notice] = '失敗しました'
+      edit_pet_path(id: @pet.id)
+    end
   end
 
   def destroy

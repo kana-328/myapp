@@ -79,10 +79,12 @@ RSpec.describe 'Pets', type: :system do
 
   describe "PUT /pets/:id" do
     let(:user) { create(:user) }
+    let(:admin) { create(:admin) }
     let(:pet) { create(:pet, user: user) }
 
     before do
       driven_by(:rack_test)
+      sign_in admin
       visit edit_pet_path(id: pet.id)
     end
 

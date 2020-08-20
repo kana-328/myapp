@@ -5,7 +5,6 @@ FactoryBot.define do
     urination { "urination" }
     appetite { "appetite" }
     vomit { "vomit" }
-    weight { "weight" }
     comment { "comment" }
     staff { "staff" }
     medicine { "medicine" }

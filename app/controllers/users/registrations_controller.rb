@@ -1,9 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :admin_user, only: :destroy
-
-  def new
-    super
-  end
+  prepend_before_action :require_no_authentication, only: [:cancel]
 
   def create
     @user = User.new(params_user)
@@ -19,6 +15,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    redirect_to users_path
+    flash[:notice] = 'ユーザーを削除しました'
+  end
+
   protected
 
   def params_user
@@ -31,9 +34,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
     user_pets_path(resource)
-  end
-
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
   end
 end

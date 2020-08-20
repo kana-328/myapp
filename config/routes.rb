@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_scope :user do
     root   'users/sessions#new'
     get     '/signup',         to: 'users/registrations#new'
@@ -22,5 +24,8 @@ Rails.application.routes.draw do
     end
   resources :pets, only: [:edit, :update, :destroy] do
     resources :conditions, shallow: true
+    resources :bodies, only: [:new, :create, :destroy]
+    resources :reservations, only: [:new]
   end
+  resources :reservations, only: [:index]
 end

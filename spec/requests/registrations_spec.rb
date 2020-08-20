@@ -75,16 +75,23 @@ RSpec.describe 'Registrations', type: :request do
 
   describe "DELETE pet/:id" do
     let!(:user) { create(:user) }
+    let!(:admin) { create(:admin) }
     let(:pet_params) { attributes_for(:pet) }
 
     before do
-      sign_in user
+      sign_in admin
     end
 
     context 'ユーザーを削除した時' do
       it 'ユーザーページにリダイレクトされる' do
         delete user_registration_path(id: user.id)
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to users_path
+      end
+
+      it "Userの数が１減る" do
+        expect do
+          delete users_registration_path(id: user.id)
+        end.to change(User, :count).by(-1)
       end
 
       it "conditionも一緒に消える" do

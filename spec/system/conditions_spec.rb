@@ -3,6 +3,7 @@ RSpec.describe 'Conditions', type: :system do
   describe "GET pet_conditions" do
     let!(:pet) { create(:pet) }
     let!(:condition) { create(:condition, pet: pet) }
+    let(:admin) { create(:admin) }
 
     before do
       driven_by(:rack_test)
@@ -10,6 +11,7 @@ RSpec.describe 'Conditions', type: :system do
     end
 
     it '期待しているフォームが表示されている' do
+      sign_in admin
       within('div#container')
       expect(page).to have_content 'pet.name'
       expect(page).to have_content '元気'
@@ -18,10 +20,10 @@ RSpec.describe 'Conditions', type: :system do
       expect(page).to have_content '排尿'
       expect(page).to have_content '嘔吐'
       expect(page).to have_content '投薬'
-      expect(page).to have_content '体重'
       expect(page).to have_content 'コメント'
       expect(page).to have_content 'スタッフ'
-      expect(page).to have_link '登録'
+      expect(page).to have_content '編集'
+      expect(page).to have_content '削除'
     end
   end
 

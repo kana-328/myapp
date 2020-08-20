@@ -4,14 +4,17 @@
     <title> <%= full_title(yield(:title)) %></title>
     <%= csp_meta_tag %>
     <%= csrf_meta_tags %>
+    <%= include_gon %>
     <script src="https://kit.fontawesome.com/c44c517b28.js" crossorigin="anonymous"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  </head>
   <body>
     <%= render 'layouts/header' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
     <%= render 'layouts/footer' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

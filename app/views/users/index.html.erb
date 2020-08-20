@@ -33,4 +33,5 @@
   <div class="paginate">
     <%= paginate @users %>
   </div>
+  <%= link_to 'CSV出力', users_path(format: :csv), class: 'btn btn-primary md-3' %>
 </section>

@@ -1,6 +1,8 @@
 <%= link_to "戻る", user_pets_path(user_id: @pet.user_id), class: 'btn btn-secondary return-btn' %>
+<%= link_to 'CSV出力', pet_conditions_path(format: :csv), class: 'btn btn-primary md-3' %>
 <% @conditions_by_date.each do |date,conditions| %>
   <h3 class="mb-4 text-center"><%= date %></h3>
     <%= render partial: 'condition', collection: conditions %>
-  <% end %>
+<% end %>
+
   
