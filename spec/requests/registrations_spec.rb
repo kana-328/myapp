@@ -98,11 +98,6 @@ RSpec.describe 'Registrations', type: :request do
         user.pets.create(pet_params)
         expect { user.destroy }.to change(Pet, :count).by(-1)
       end
-
-      it 'userがusers_pathから削除されている' do
-        delete user_registration_path(user)
-        expect(response.body).not_to include user
-      end
     end
   end
 end
