@@ -1,6 +1,12 @@
 class ReservationsController < ApplicationController
   def index
-
+    @reservations = Reservation.all
+    @pet = Pet.includes(:reservations)
+    respond_to do |format|
+      format.html
+      format.json {render :json => @reservations.to_json(only: [:title, :start, :end, :pet_id])}
+    end 
+    
   end
 
   def new

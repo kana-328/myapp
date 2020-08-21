@@ -1,12 +1,14 @@
-<%= form_for @reservation, url: pet_reservations_path(pet_id: @pet.id) do |f| %>
-  <%= f.label :title, '予約名' %>
-  <%= f.select :title, {'ホテル':'ホテル' , '入院': '入院', 'しつけ': 'しつけ'} , { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %>
-  <%= f.label :start, 'IN' %>
-  <%= f.date_select :start, use_month_numbers: true, end_year: (Time.now.year + 1) %>
-  <%= f.label :end, 'OUT' %>
-  <%= f.date_select :end, use_month_numbers: true, end_year: (Time.now.year + 1) %>
-  <%= hidden_field_tag :pet_id, @pet.id %>
-<div>
-  <%= f.submit '登録', class: 'btn btn-primary' %>
-</div>
+<%= form_for @reservation, url:  pet_reservations_path(pet_id: @pet.id)  do |f| %>
+  <div  class="col">
+    <span>予約名</span>
+    <span><%= f.select :title, {'ホテル':'ホテル' , '入院': '入院', 'しつけ': 'しつけ'} , { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %></span>
+    <span>I N</span>
+    <span><%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
+    <span>OUT</span>
+    <span><%= f.datetime_field :end, placeholder: "XXXX-XX-XX", class:"field" %></span><br>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "登録する", class: "btn btn-primary js-form" %>
+    <%= f.hidden_field :pet_id, :value => @pet.id %>
+  </div>
 <% end %>

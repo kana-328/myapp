@@ -20,22 +20,29 @@
 //= require popper
 //= require_tree .
 
-document.addEventListener("turbolinks:load",function () {
-$("#calendar").fullCalendar({
-  events: [
-    {
-      title: 'My Event',
-      start: '2020-08-30',
-      url: 'http://google.com/'
-    }
-    // other events here
-  ],
-  eventClick: function(info) {
-    info.jsEvent.preventDefault(); // don't let the browser navigate
 
-    if (info.event.url) {
-      window.open(info.event.url);
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+  header: {
+      left: 'prev,next',
+      center: 'title',
+      right: 'month,agendaWeek'
+    },
+    events: {
+      url: '/reservations.json',
+      method: 'GET',
+      extraParams: {
+        custom_param1: 'something',
+        custom_param2: 'somethingelse'
+      },
+
+      failure: function() {
+        alert('there was an error while fetching events!');
+      },
+      color: 'pink',
+      textColor: 'black',
+
     }
-  }
-});
+  });
+
 });

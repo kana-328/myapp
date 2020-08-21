@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_scope :user do
     root   'users/sessions#new'
