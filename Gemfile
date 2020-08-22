@@ -26,6 +26,9 @@ gem 'momentjs-rails'
 gem 'gon',  '~> 6.2.0'
 gem 'cancancan'
 gem 'rails_admin', '~> 2.0'
+gem 'carrierwave',             '1.1.0'
+gem 'mini_magick',             '4.7.0'
+gem 'fog-aws',                     '1.40.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
