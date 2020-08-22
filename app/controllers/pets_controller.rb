@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+
   def new
     @pet = Pet.new
   end
@@ -6,6 +7,10 @@ class PetsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @pets = @user.pets
+  end
+
+  def show
+    @pet = Pet.find(params[:id])
   end
 
   def create

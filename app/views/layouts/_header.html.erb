@@ -2,27 +2,28 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="bs-component">
+       <% if user_signed_in? %>
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <%= link_to "ホーム", root_path, method: :get, class: "nav-link",:data => {:toggle=>"tab"} %>
-          </li>
-          <li>
-            <button type="button" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
-              <span><i class="fas fa-search fa-2x"></i></span>
-            </button>     
-          <li class="nav-item">
-            <%= link_to "ユーザー登録", signup_path, class: 'nav-link' %>
-            <%= link_to "一覧", users_path, class: 'nav-link' %>
+            <%= link_to "スケジュール表", reservations_path, class: 'nav-link',data: {"turbolinks" => false } %>
           </li>
           <li class="nav-item">
-            <%= link_to "スケジュール表", reservations_path, class: 'nav-link' %>
+            <%= link_to "顧客新規登録", signup_path, class: 'nav-link' %>
           </li>
-          <li class="nav-item setting">
-            <%= link_to rails_admin_path, :method => :get do %>
-              <i class="fas fa-cogs fa-2x"></i>
-               <%= link_to "userログアウト", logout_path,{ method: :delete, class: "links"} %><br />
+          <li class="nav-item">
+            <%= link_to "ユーザ一覧・検索", users_path, class: 'nav-link' %>
           </li>
-          <% end %> 
+          <li class="nav-item">
+            <%= link_to "ログアウト", logout_path,{ method: :delete, class: "links"} %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
+          </li>
+        <% end %>
         </ul>
       </div>
     </div>

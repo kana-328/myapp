@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :users,    only: [:index] do
     resources :pets, only: [:new, :index, :create] 
     end
-  resources :pets, only: [:edit, :update, :destroy] do
+  resources :pets, only: [:show, :edit, :update, :destroy] do
     resources :conditions, shallow: true
     resources :bodies, only: [:new, :create, :destroy]
     resources :reservations, only: [:new, :create]

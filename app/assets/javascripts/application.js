@@ -20,29 +20,29 @@
 //= require popper
 //= require_tree .
 
-
-$(document).ready(function() {
-  $('#calendar').fullCalendar({
-  header: {
-      left: 'prev,next',
-      center: 'title',
-      right: 'month,agendaWeek'
-    },
-    events: {
-      url: '/reservations.json',
-      method: 'GET',
-      extraParams: {
-        custom_param1: 'something',
-        custom_param2: 'somethingelse'
+document.addEventListener("turbolinks:load",function () {
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      displayEventTime : false,
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'month,agendaWeek'
       },
-
-      failure: function() {
-        alert('there was an error while fetching events!');
+      events: {
+        url: '/reservations.json',
+        method: 'GET', 
+        eventTimeFormat: { 
+        hour: 'numeric',
+        minute: '2-digit',
+        omitZeroMinute: true,
+        meridiem: 'narrow',
       },
-      color: 'pink',
-      textColor: 'black',
-
-    }
+        failure: function() {
+          alert('error!');
+        },
+        color: 'pink',
+      }
+    });
   });
-
 });

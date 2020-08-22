@@ -1,12 +1,11 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
-    @pet = Pet.includes(:reservations)
+    @date = Pet.find_by_sql(current_date_sql)
     respond_to do |format|
       format.html
-      format.json {render :json => @reservations.to_json(only: [:title, :start, :end, :pet_id])}
-    end 
-    
+      format.json {render :json => @reservations.to_json(only: [:title, :start, :end])}
+    end
   end
 
   def new
@@ -26,10 +25,13 @@ class ReservationsController < ApplicationController
     end
   end
 
+
+  def current_date_sql
+    query = "SELECT * FROM  pets JOIN reservations ON pets.id = reservations.pet_id WHERE current_date BETWEEN reservations.start AND reservations.end"
+  end
   private
 
   def reservation_params
-    params
-      .require(:reservation).permit(:title, :start, :end, :pet_id)
+    params.require(:reservation).permit(:title, :start, :end, :pet_id)
   end
 end

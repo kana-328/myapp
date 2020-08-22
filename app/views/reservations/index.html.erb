@@ -1,1 +1,12 @@
-<div id="calendar"></div> 
+<h3>今日のお世話する子たち</h3>
+<ul class="pets">
+  <% @date.each do |reservation| %>
+    <li>
+      <%= link_to reservation.name, pet_path(id: reservation.pet_id) %>
+      <%= reservation.title %>
+      IN<%= reservation.start %> 〜OUT<%= reservation.end %>
+    </li>
+  <% end %>
+</ul>
+<div id="calendar"></div>
+
