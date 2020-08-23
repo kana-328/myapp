@@ -8,8 +8,6 @@
 
 <%= link_to '利用規約', static_pages_path ,{class: "links"}%><br />
 
-<%= link_to "ログアウト", destroy_user_session_path,{ method: :delete, class: "links"} %><br />
-
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "パスワードを忘れた方", new_user_password_path(resource_name) ,{class: "links"} %><br />
 <% end %>

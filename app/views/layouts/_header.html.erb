@@ -14,17 +14,20 @@
             <%= link_to "ユーザ一覧・検索", users_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", logout_path,{ method: :delete, class: "links"} %>
+            <%= link_to "ログアウト", logout_path,{ method: :delete, class: "nav-link"} %>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
-          </li>
-        <% end %>
         </ul>
+        <% else %>
+         <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <%= link_to "新規登録", signup_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", login_path, class: 'nav-link' %>
+          </li>
+           </ul>
+        <% end %>
+        
       </div>
     </div>
   </div>

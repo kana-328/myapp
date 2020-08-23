@@ -3,7 +3,7 @@
 <h4>種類:<%= pet.breed %></h4>
 <h4>性別:<%= pet.sex %></h4>
 <h4>生年月日:<%= pet.birthday %></h4>
+<%= link_to "予約記入",  new_pet_reservation_path(pet_id: pet.id), class: 'btn btn-danger' %>
 <%= link_to "管理表記入", new_pet_condition_path(pet_id: pet.id),data: {"turbolinks" => false },  class: 'btn btn-success' %>
-<%= link_to "管理表", pet_conditions_path(pet_id: pet.id),  class: 'btn btn-primary' %>
+<%= link_to "管理表閲覧", pet_conditions_path(pet_id: pet.id),  class: 'btn btn-primary' %>
 <%= link_to '体重記入',new_pet_body_path(pet_id: pet.id), class: 'btn btn-info' %>
-<%= link_to "予約",  new_pet_reservation_path(pet_id: pet.id), class: 'btn btn-warning' %>
