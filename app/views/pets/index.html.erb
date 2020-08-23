@@ -1,4 +1,4 @@
-<%= link_to "戻る", users_path, class: 'btn btn-outline-secondary return-btn' %>
+<%= link_to "戻る", :back, class: 'btn btn-outline-secondary return-btn' %>
 <div class="container">
   <%= link_to "ペット追加登録", new_user_pet_path, class: 'btn btn-secondary' %>
   <%= link_to "ユーザー編集", user_edit_registration_path(id: @user.id), class: 'btn btn-warning' %>

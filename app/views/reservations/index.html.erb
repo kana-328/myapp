@@ -1,12 +1,25 @@
-<h3>今日のお世話する子たち</h3>
+<div class="container">
+<h3 class="text-center">今日のお世話する子たち</h3>
+  <div class="row">
+<div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://localhost:3000/reservations" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 <ul class="pets">
   <% @date.each do |reservation| %>
     <li>
-      <%= link_to reservation.name, pet_path(id: reservation.pet_id) %>
-      <%= reservation.title %>
-      IN<%= reservation.start %> 〜OUT<%= reservation.end %>
+      <div class="col">
+        <%= link_to reservation.name, pet_path(id: reservation.pet_id) %>
+        <%= reservation.title %>
+        IN<%= reservation.start %> 〜OUT<%= reservation.end %>
+      </div>
+      <div class="col">
+        <%= link_to '体重記入',new_pet_body_path(pet_id: reservation.pet_id), class: 'btn btn-info' %>
+        <%= link_to "管理表記入", new_pet_condition_path(pet_id: reservation.pet_id),data: {"turbolinks" => false },  class: 'btn btn-success' %>
+        <%= link_to "管理表", pet_conditions_path(pet_id: reservation.pet_id),  class: 'btn btn-primary' %>
+      </div>
     </li>
   <% end %>
 </ul>
+</div>
+</div>
 <div id="calendar"></div>
 
