@@ -26,5 +26,5 @@ Rails.application.routes.draw do
     resources :bodies, only: [:new, :create, :destroy]
     resources :reservations, only: [:new, :create]
   end
-  resources :reservations, only: [:index, :edit, :destroy]
+  resources :reservations, only: [:index, :edit, :update, :destroy]
 end
