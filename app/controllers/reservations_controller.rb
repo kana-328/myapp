@@ -25,6 +25,12 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def destroy
+  end
+
 
   def current_date_sql
     query = "SELECT * FROM  pets JOIN reservations ON pets.id = reservations.pet_id WHERE current_date BETWEEN reservations.start AND reservations.end ORDER BY reservations.start"

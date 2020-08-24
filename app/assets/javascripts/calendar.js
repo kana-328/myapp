@@ -20,7 +20,15 @@ document.addEventListener("turbolinks:load",function () {
           alert('error!');
         },
         color: 'pink',
-      }
+      },        
+        eventClick: function(calEvent, jsEvent, view) {
+          if(!confirm('削除しますか？')){
+            return false;
+          }else{
+          $('#calendar').fullCalendar("removeEvents", calEvent._id);
+          }
+       },
+
     });
   });
 });
