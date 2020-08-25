@@ -1,10 +1,12 @@
 class ReservationsController < ApplicationController
+
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.joins(:pet)
+    @reservation =  Reservaiton.find(params[:id])
     @date = Pet.find_by_sql(current_date_sql)
     respond_to do |format|
       format.html
-      format.json {render :json => @reservations.to_json(only: [:title, :start, :end])}
+      format.json {render :json => @reservations.to_json(only: [:title, :start, :end, :id, :name])}
     end
   end
 
@@ -25,6 +27,12 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+    @reservation = Reservaiton.find(params[:id])
+  end
   def destroy
     reservation = Reservation.find(params[:id])
     reservation.destroy

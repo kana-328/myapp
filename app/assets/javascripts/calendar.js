@@ -5,27 +5,27 @@ document.addEventListener("turbolinks:load",function () {
       header: {
         left: 'prev,next',
         center: 'title',
-        right: 'month,agendaWeek'
       },
       events: {
         url: '/reservations.json',
         method: 'GET', 
-        eventTimeFormat: { 
-        hour: 'numeric',
-        minute: '2-digit',
-        omitZeroMinute: true,
-        meridiem: 'narrow',
-      },
         failure: function() {
           alert('error!');
         },
         color: 'pink',
-      },        
-          eventClick : function(event, jsEvent , view) {
-            jsEvent.preventDefault();
-           console.log('hoge')
+      },  
+        eventClick : function(event, jsEvent , view) {
+          $('#modalTitle').html(event.title); // モーダルのタイトルをセット
+          $('#modalBody').html(event.description); // モーダルの本文をセット
+          $('#calendarModal').modal(); // モーダル着火
+        
+        var EventID = (event.id);
+          $.ajax({
+            url: "/reservations/" + EventID,
+            type: "POST",
+            data: {"id": EventID, "_method": "DELETE"}
+          });
        },
-
     });
   });
 });
