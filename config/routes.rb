@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_scope :user do
     root   'users/sessions#new'
@@ -22,10 +21,10 @@ Rails.application.routes.draw do
   resources :users,    only: [:index] do
     resources :pets, only: [:new, :index, :create] 
     end
-  resources :pets, only: [:edit, :update, :destroy] do
+  resources :pets, only: [:show, :edit, :update, :destroy] do
     resources :conditions, shallow: true
     resources :bodies, only: [:new, :create, :destroy]
-    resources :reservations, only: [:new]
+    resources :reservations, only: [:new, :create]
   end
-  resources :reservations, only: [:index]
+  resources :reservations, only: [:index, :destroy]
 end

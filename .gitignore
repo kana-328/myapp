@@ -13,7 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 /vendor/*
-
+/public/uploads
 # Ignore uploaded files in development
 *.DS_Store
 /storage/*

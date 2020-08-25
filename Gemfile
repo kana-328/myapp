@@ -26,14 +26,15 @@ gem 'momentjs-rails'
 gem 'gon',  '~> 6.2.0'
 gem 'cancancan'
 gem 'rails_admin', '~> 2.0'
+gem 'carrierwave',             '1.1.0'
+gem 'mini_magick',             '4.7.0'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rubocop-airbnb'
-  gem 'capybara', '~> 2.15.2'
-  gem 'launchy', '~>2.4.3'
   gem 'webdrivers'
   gem 'pry-byebug'
   gem 'pry-rails'

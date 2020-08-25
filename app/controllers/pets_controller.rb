@@ -8,6 +8,10 @@ class PetsController < ApplicationController
     @pets = @user.pets
   end
 
+  def show
+    @pet = Pet.find(params[:id])
+  end
+
   def create
     @id = params[:user_id]
     @pet = Pet.new(params_pet)
@@ -46,6 +50,6 @@ class PetsController < ApplicationController
   private
 
   def params_pet
-    params.require(:pet).permit(:name, :breed, :birthday, :sex, :user_id)
+    params.require(:pet).permit(:name, :breed, :birthday, :sex, :image, :remove_image)
   end
 end

@@ -1,4 +1,7 @@
 <div class="form-group">
+
+</div>
+<div class="form-group">
   <%= f.label :birthday,'生年月日' %>
   <%= f.date_select :birthday, use_month_numbers: true,
   start_year: 2000, end_year: (Time.now.year + 0),
@@ -18,6 +21,6 @@
   <%= f.select :sex, {'オス': 'オス', 'メス': 'メス', '去勢済オス': '去勢済オス','避妊済メス': '避妊済メス'},
    { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputSex" } %>
 </div>
-<div class="form-group row"></div>               
-<%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block"%>        
+<div class="form-group row submit"></div>               
+<%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block rounded-pill"%>        
 <hr>

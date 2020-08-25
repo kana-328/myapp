@@ -1,4 +1,4 @@
-<%= link_to "戻る", users_path, class: 'btn btn-outline-secondary return-btn' %>
+<%= link_to "戻る", :back, class: 'btn btn-outline-secondary return-btn' %>
 <div class="container">
   <%= link_to "ペット追加登録", new_user_pet_path, class: 'btn btn-secondary' %>
   <%= link_to "ユーザー編集", user_edit_registration_path(id: @user.id), class: 'btn btn-warning' %>
@@ -14,16 +14,8 @@
 </div>
 <div class="flexbox"> 
   <% @pets.each do |pet| %>
-  <div class="item">
-    <h3>名前:<%= link_to pet.name, new_pet_condition_path(pet_id: pet.id),data: {"turbolinks" => false } %></h3>
-    <h4>種類:<%= pet.breed %></h4>
-    <h4>性別:<%= pet.sex %></h4>
-    <h4>生年月日:<%= pet.birthday %></h4>
-    <%= link_to "管理表", pet_conditions_path(pet_id: pet.id),  class: 'btn btn-primary' %>
-    <%= link_to '体重記入',new_pet_body_path(pet_id: pet.id), class: 'btn btn-info' %>
-    <%= link_to "ペット編集", edit_pet_path(id: pet.id), class: 'btn btn-warning' %>
-    <%= link_to "ペット削除", pet_path(id: pet.id), method: :delete,
-    class: 'btn btn-danger',data: { confirm: "#{pet.name}ちゃんを消してもよろしいですか?" } %>
-  </div>
+    <div class="item">
+      <%= render 'pet', pet: pet %>
+    </div>
   <% end %>
 </div>

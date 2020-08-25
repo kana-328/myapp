@@ -15,8 +15,7 @@ RSpec.describe 'Pets', type: :system do
       expect(page).to have_content '名前'
       expect(page).to have_content '種類'
       expect(page).to have_content '性別'
-      expect(page).to have_content 'ペット編集'
-      expect(page).to have_content 'ペット削除'
+      expect(page).to have_content 'プロフィール編集'
     end
 
     it 'オーナーの情報が表示されている' do
@@ -26,13 +25,6 @@ RSpec.describe 'Pets', type: :system do
       expect(page).to have_content '住所'
       expect(page).to have_content 'アドレス'
       expect(page).to have_content 'ペット追加登録'
-    end
-
-    context "ペット削除を実行した時" do
-      it "期待しているメッセージが表示される" do
-        click_on 'ペット削除'
-        expect(page).to have_content 'ペットを消しました'
-      end
     end
   end
 
@@ -62,6 +54,7 @@ RSpec.describe 'Pets', type: :system do
     context 'フォームの必要な情報が空白だった時' do
       it 'バリデーションのエラーメッセージが表示される' do
         fill_in 'pet[name]', with: ""
+        find('.submit').click
         click_on '登録'
         expect(page).to have_content '名前を入力してください'
         expect(page).to have_content '保存されませんでした'
@@ -100,6 +93,7 @@ RSpec.describe 'Pets', type: :system do
       expect(page).to have_content '種類'
       expect(page).to have_content '性別'
       expect(page).to have_content '登録'
+      expect(page).to have_content 'ペット削除'
     end
 
     context 'ペットの名前を変更した時' do
@@ -108,6 +102,13 @@ RSpec.describe 'Pets', type: :system do
         click_on '登録'
         expect(page).to have_content 'ペット情報を更新しました'
         expect(page).to have_content 'update.name'
+      end
+    end
+
+    context "ペット削除を実行した時" do
+      it "期待しているメッセージが表示される" do
+        click_on 'ペット削除'
+        expect(page).to have_content 'ペットを消しました'
       end
     end
   end

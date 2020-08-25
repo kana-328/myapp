@@ -20,17 +20,4 @@
 //= require popper
 //= require_tree .
 
-
-$("#calendar").fullCalendar({
-  events: [
-    {
-    title  : "event1",
-    start  : "2020-08-01"
-    },
-    {
-    title  : "event2",
-    start  : "2020-08-07",
-    end    : "2020-08-09"
-    }
-    ]
-});
+document.DOMContentLoaded("line-it-button")
