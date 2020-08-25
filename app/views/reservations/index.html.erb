@@ -9,7 +9,7 @@
       <div class="col">
         <%= link_to reservation.name, pet_path(id: reservation.pet_id) %>
         <%= reservation.title %>
-        IN<%= reservation.start %> 〜OUT<%= reservation.end %>
+        IN<%= reservation.start_date %> 〜OUT<%= reservation.end_date %>
       </div>
       <div class="col">
         <%= link_to '体重記入',new_pet_body_path(pet_id: reservation.pet_id), class: 'btn btn-info' %>

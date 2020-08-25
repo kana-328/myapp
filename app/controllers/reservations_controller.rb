@@ -1,12 +1,10 @@
 class ReservationsController < ApplicationController
-
   def index
-    @reservations = Reservation.joins(:pet)
-    @reservation =  Reservaiton.find(params[:id])
+    @reservations = Reservation.all
     @date = Pet.find_by_sql(current_date_sql)
     respond_to do |format|
       format.html
-      format.json {render :json => @reservations.to_json(only: [:title, :start, :end, :id, :name])}
+      format.json { render :json => @reservations.to_json(only: [:title, :start_date, :end_date, :id, :name]) }
     end
   end
 
@@ -27,12 +25,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def edit
-    @reservation = Reservaiton.find(params[:id])
-  end
   def destroy
     reservation = Reservation.find(params[:id])
     reservation.destroy
@@ -41,8 +33,9 @@ class ReservationsController < ApplicationController
   end
 
   def current_date_sql
-    query = "SELECT * FROM  pets JOIN reservations ON pets.id = reservations.pet_id WHERE current_date BETWEEN reservations.start AND reservations.end ORDER BY reservations.start"
+    "SELECT * FROM  pets JOIN reservations ON pets.id = reservations.pet_id WHERE current_date BETWEEN reservations.start_date AND reservations.end_date ORDER BY reservations.start_date"
   end
+
   private
 
   def reservation_params

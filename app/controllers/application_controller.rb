@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def after_sign_in_path_for(user)
-    user_pets_path(user_id: user.id)
+  def after_sign_in_path_for(resource)
+    reservations_path
   end
 end

@@ -14,7 +14,7 @@ RSpec.describe 'Sessions', type: :request do
     it "ログイン後期待しているページが表示される" do
       post login_path, params: { user: { email: user.email, password: user.password } }
       expect(response.status).to eq 302
-      expect(response).to redirect_to "/users/#{assigns(:user).id}/pets"
+      expect(response).to redirect_to "/reservations"
     end
   end
 end

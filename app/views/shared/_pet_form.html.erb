@@ -1,15 +1,5 @@
 <div class="form-group">
-  <p>
-    <label>画像</label>
-    <%= image_tag(@pet.image.thumb.url) if @pet.image? %>
-    <%= f.file_field :image %>
-  </p>
-  <p>
-    <label>
-      <%= f.check_box :remove_image %>
-      画像を削除する
-    </label>
-  </p>
+
 </div>
 <div class="form-group">
   <%= f.label :birthday,'生年月日' %>
@@ -31,6 +21,6 @@
   <%= f.select :sex, {'オス': 'オス', 'メス': 'メス', '去勢済オス': '去勢済オス','避妊済メス': '避妊済メス'},
    { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputSex" } %>
 </div>
-<div class="form-group row"></div>               
+<div class="form-group row submit"></div>               
 <%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block rounded-pill"%>        
 <hr>
