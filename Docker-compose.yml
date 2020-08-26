@@ -9,6 +9,7 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PRODUCTION_HOST: ${PRODUCTION_HOST}
     ports:
       - ${DATABASE_PORT}:5432
       

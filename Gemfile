@@ -27,7 +27,7 @@ gem 'gon',  '~> 6.2.0'
 gem 'cancancan'
 gem 'rails_admin', '~> 2.0'
 gem 'carrierwave',             '1.1.0'
-gem 'mini_magick',             '4.7.0'
+gem "mini_magick", ">= 4.9.4"
 gem 'fog-aws'
 
 group :development, :test do
