@@ -1,3 +1,4 @@
+<% provide(:title, '管理表一覧') %>
 <%= link_to "戻る", :back, class: 'btn btn-outline-secondary return-btn' %>
 <%= link_to 'CSV出力', pet_conditions_path(format: :csv), class: 'btn btn-primary md-3' %>
 <% @conditions_by_date.each do |date,conditions| %>

@@ -1,3 +1,4 @@
+<% provide(:title, 'ペット登録') %>
 <%= form_for(@pet, url: user_pets_path) do |f| %>
 <%= render "devise/shared/error_messages", resource: @pet %>
   <div class="container">
