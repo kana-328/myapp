@@ -9,6 +9,11 @@ document.addEventListener("turbolinks:load",function () {
       events: {
         url: '/reservations.json',
         method: 'GET', 
+        data: JSON.stringify({
+          title: title,
+          start_date: start.toISOString(),
+          end_date: end.toISOString()
+      }),
         failure: function() {
           alert('error!');
       },

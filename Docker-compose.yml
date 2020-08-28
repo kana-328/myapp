@@ -9,10 +9,9 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      PRODUCTION_HOST: ${PRODUCTION_HOST}
     ports:
       - ${DATABASE_PORT}:5432
-      
+
   app:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
