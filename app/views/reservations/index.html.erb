@@ -1,5 +1,5 @@
 <div class="container">
-<h3 class="text-center">今日のお世話する子たち</h3>
+<h3 class="text-center">お世話リスト<%= Date.current %></h3>
 <div class="row">
   <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://localhost:3000/reservations" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
   <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
@@ -9,7 +9,7 @@
         <div class="col">
           <%= link_to reservation.name, pet_path(id: reservation.pet_id) %>
           <%= reservation.title %>
-          IN<%= reservation.start_date %> 〜OUT<%= reservation.end_date %>
+          IN<%= reservation.start %> 〜OUT<%= reservation.end %>
         </div>
         <div class="col">
           <%= link_to '体重記入',new_pet_body_path(pet_id: reservation.pet_id), class: 'btn btn-info' %>

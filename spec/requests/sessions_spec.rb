@@ -7,7 +7,7 @@ RSpec.describe 'Sessions', type: :request do
 
     let(:user) { create(:user) }
 
-    it 'ログイン画面のリクエストが成功すること' do
+    it '200レスポンスが返ってくる' do
       expect(response.status).to eq 200
     end
 

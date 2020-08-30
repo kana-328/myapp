@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
     @date = Pet.find_by_sql(current_date_sql)
     respond_to do |format|
       format.html
-      format.json { render :json => @reservations.to_json(only: [:title, :start_date, :end_date, :id, :name]) }
+      format.json { render :json => @reservations.to_json(only: [:title, :start, :end, :id, :name]) }
     end
   end
 
@@ -33,12 +33,12 @@ class ReservationsController < ApplicationController
   end
 
   def current_date_sql
-    "SELECT * FROM  pets JOIN reservations ON pets.id = reservations.pet_id WHERE current_date BETWEEN reservations.start_date AND reservations.end_date ORDER BY reservations.start_date"
+    "SELECT * FROM  pets JOIN reservations ON pets.id = reservations.pet_id WHERE current_date BETWEEN reservations.start AND reservations.end ORDER BY reservations.start"
   end
 
   private
 
   def reservation_params
-    params.require(:reservation).permit(:title, :start_date, :end_date, :pet_id)
+    params.require(:reservation).permit(:title, :start, :end, :pet_id)
   end
 end
