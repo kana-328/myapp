@@ -1,6 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'Reservations', type: :system do
-
+  ls -l /var/hoge/index.html
+  -rw-r--r--. 1 root root 9 Jun  1 08:14 /var/hoge/index.html
+   
   let(:reservation) { create(:reservation, end: "2020-01-05 01:29:01", pet: pet ) }
   let(:pet) { create(:pet ) }
 
@@ -8,7 +10,7 @@ RSpec.describe 'Reservations', type: :system do
     driven_by(:rack_test)
     visit reservations_path
   end
-
+  Reservation.where(Reservation.arel_table[:start].gteq(Date.new(2020, 8, 31))).where(Reservation.arel_table[:test_date].lteq(Date.new(2020, 8, 31)))
   context do
 
     it '期待している文字が表示される' do
