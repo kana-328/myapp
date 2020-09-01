@@ -57,4 +57,9 @@ group :test do
   gem 'launchy', '~>2.4.3'
 end
 
+group :production, :staging do
+  gem 'unicorn'
+  gem 'therubyracer', :platforms => :ruby
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
