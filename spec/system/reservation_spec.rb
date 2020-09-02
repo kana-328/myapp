@@ -23,7 +23,7 @@ RSpec.describe 'Reservations', type: :system do
         travel_to('2020-01-01 10:00'){ e.run }
       end
       it "予定のPETが表示される" do
-          expect(page).to have_content 
+        expect(page).to have_content 
       end
     end
   end
