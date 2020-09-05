@@ -27,16 +27,6 @@ services:
     depends_on:
       - db 
 
-  web:
-    build: ./containers/nginx
-    ports:
-      - 80:80
-    volumes:
-      - tmp-data:/myapp/tmp/sockets
-      - public-data:/myapp/public
-    depends_on:
-      - app
-
 volumes:
   public-data:
   tmp-data:

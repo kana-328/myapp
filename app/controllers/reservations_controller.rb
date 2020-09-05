@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.pet_id = params[:pet_id]
     if @reservation.save
-      flash[:notice] = 'を登録しました'
+      flash[:notice] = '予約を登録しました'
       redirect_to reservations_path
     else
       flash[:notice] = '登録に失敗しました'
