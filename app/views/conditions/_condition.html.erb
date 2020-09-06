@@ -1,15 +1,14 @@
+<% provide(:title, '管理表') %>
 <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col" ><%= @pet.name %></th>
-         <td><%= condition.recorded_at %>
-      </tr>
-  </thead>
   <tbody>
     <tr>
+      <th scope="row">時間</th>
+      <td><%= condition.recorded_at %>
+    </tr>
+    <tr>
       <th scope="row">元気</th>
-        <td><%= condition.vitality %>
-    </tr>   
+      <td><%= condition.vitality %>   
+    </tr>    
     <tr>
       <th scope="row">食欲</th>
       <td><%= condition.appetite %>   
@@ -25,7 +24,6 @@
     <tr>
       <th scope="row">嘔吐</th>
       <td><%= condition.vomit %>
-     
     </tr>
     <tr>
       <th scope="row">投薬</th>
@@ -41,5 +39,5 @@
     </tr> 
   </tbody>
 </table>
- <%= link_to "削除", condition_path(id: condition.id),{ method: :delete, class: 'btn btn-outline-secondary'} %>
- <%= link_to "編集", edit_condition_path(id: condition.id), class: 'btn btn-outline-secondary' %>
+<%= link_to "削除", condition_path(id: condition.id),{ method: :delete, data: {"turbolinks" => false }, class: 'btn btn-outline-secondary'} %>
+<%= link_to "編集", edit_condition_path(id: condition.id), data: {"turbolinks" => false }, class: 'btn btn-outline-secondary' %>

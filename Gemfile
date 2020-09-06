@@ -24,10 +24,8 @@ gem 'kaminari'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'gon',  '~> 6.2.0'
-gem 'cancancan'
-gem 'rails_admin', '~> 2.0'
 gem 'carrierwave',             '1.1.0'
-gem 'mini_magick',             '4.7.0'
+gem "mini_magick", ">= 4.9.4"
 gem 'fog-aws'
 
 group :development, :test do
@@ -55,6 +53,11 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara', '~> 2.15.2'
   gem 'launchy', '~>2.4.3'
+end
+
+group :production, :staging do
+  gem 'unicorn'
+  gem 'mini_racer'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

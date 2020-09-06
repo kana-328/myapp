@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe Reservation, type: :model do
-  let(:reservation) { build_stubbed(:reservation) }
+  let(:reservation) { build(:reservation, end: "2020-01-05 01:29:01", pet: pet) }
+  let(:pet) { create(:pet) }
 
   it "サンプルデータが正しい状態である" do
     expect(reservation).to be_valid
@@ -11,13 +12,13 @@ RSpec.describe Reservation, type: :model do
     expect(reservation).not_to be_valid
   end
 
-  it "start_dateが空白だと無効な状態である" do
-    reservation.start_date = ' '
+  it "startが空白だと無効な状態である" do
+    reservation.start = ' '
     expect(reservation).not_to be_valid
   end
 
   it "end_dateが空白だと無効な状態である" do
-    reservation.end_date = ' '
+    reservation.end = ' '
     expect(reservation).not_to be_valid
   end
 
