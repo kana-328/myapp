@@ -1,5 +1,4 @@
 class ConditionsController < ApplicationController
-
   def new
     @pet = Pet.find(params[:pet_id])
     @condition = Condition.new
@@ -16,12 +15,12 @@ class ConditionsController < ApplicationController
     @condition.pet_id = @pet.id
     @conditions = @pet.conditions.order(created_at: "DESC")
     if @condition.save
-      flash[:success] ='記入しました'
-      respond_to do|format|
+      flash[:success] = '記入しました'
+      respond_to do |format|
         format.js
       end
     else
-      flash[:success] ='記入が失敗しました'
+      flash[:notice] = '記入が失敗しました'
       render 'new'
     end
   end
@@ -44,7 +43,7 @@ class ConditionsController < ApplicationController
   def destroy
     condition = Condition.find_by(id: params[:id]).destroy
     flash[:notice] = '管理表を消しました'
-    redirect_to pet_conditions_path(pet_id: condition.pet_id)
+    redirect_to new_pet_condition_path(pet_id: condition.pet_id)
   end
 
   private

@@ -1,8 +1,7 @@
 require 'rails_helper'
 RSpec.describe Reservation, type: :model do
-  
-  let(:reservation) { build(:reservation, end: "2020-01-05 01:29:01", pet: pet ) }
-  let(:pet) { create(:pet ) }
+  let(:reservation) { build(:reservation, end: "2020-01-05 01:29:01", pet: pet) }
+  let(:pet) { create(:pet) }
 
   it "サンプルデータが正しい状態である" do
     expect(reservation).to be_valid
