@@ -1,15 +1,15 @@
-body{
+body {
   margin:0;
  }
 
-header{
+header {
   background-color: #C1E5FF;
   height: 100px;
   padding-top: 30px;
   font-size: larger;
 }
 
-footer{
+footer {
   background-color: #C1E5FF;
   height: 100px
 }
@@ -18,16 +18,16 @@ footer{
   color: black;
 }
 
-.app-name{
+.app-name {
   text-align: right; 
 }
 
-.btn.outline{
+.btn.outline {
   background-color: #FF8EA3;
   border: 3px solid #FF8EA3;
 }
 
-.links{
+.links {
   color: black;
 }
 
@@ -45,21 +45,21 @@ footer{
   border-radius: 15px;
 }
 
-.paginate{
+.paginate {
   margin: auto;
 }
 
-.table-bordered{
+.table-bordered {
   text-align: center;
   font-size: x-large;
   table-layout: fixed;
 }
 
-.table-bordered th{
+.table-bordered th {
   background-color:  #C1E5FF; ;
 }
 
-.return-btn{
+.return-btn {
   float: right;
   margin-right: 20px;
 }
@@ -84,4 +84,9 @@ footer{
     padding: 10px 0;
     border-bottom: 1px solid gray;
   }
+}
+
+.title {
+  color: #fff;
+  font-family: 'Baloo Bhaina', cursive;
 }

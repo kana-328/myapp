@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :pets, only: [:new, :index, :create] 
     end
   resources :pets, only: [:show, :edit, :update, :destroy] do
-    resources :conditions, only: [:new, :create, :edit, :update, :destroy] ,shallow: true
+    resources :conditions, shallow: true
     resources :bodies, only: [:new, :create, :destroy]
     resources :reservations, only: [:new, :create]
   end
