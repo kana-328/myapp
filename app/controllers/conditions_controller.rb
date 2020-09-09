@@ -2,7 +2,7 @@ class ConditionsController < ApplicationController
   def new
     @pet = Pet.find(params[:pet_id])
     @condition = Condition.new
-    @conditions = @pet.conditions.order(created_at: "DESC")
+    @conditions = @pet.conditions.sorted
     respond_to do |format|
       format.html
       format.csv { send_data @pet.conditions.generate_csv, filename: "conditions-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
@@ -13,7 +13,7 @@ class ConditionsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @condition = Condition.new(params_condition)
     @condition.pet_id = @pet.id
-    @conditions = @pet.conditions.order(created_at: "DESC")
+    @conditions = @pet.conditions.sorted
     if @condition.save
       flash[:success] = '記入しました'
       respond_to do |format|

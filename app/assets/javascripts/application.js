@@ -19,5 +19,3 @@
 //= require bootstrap-sprockets
 //= require popper
 //= require_tree .
-
-document.DOMContentLoaded("line-it-button")

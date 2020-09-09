@@ -28,6 +28,7 @@ gem 'carrierwave',             '1.1.0'
 gem "mini_magick", ">= 4.9.4"
 gem 'fog-aws'
 gem 'ransack'
+gem 'bullet'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

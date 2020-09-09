@@ -2,9 +2,9 @@
   <div  class="col">
     <span>予約名</span>
     <span><%= f.select :title, {'ホテル':'ホテル' , '入院': '入院', 'しつけ': 'しつけ'} , { include_blank: '選択してください'}, { class: 'form-control form-control-user' , id: "exampleInputBreed" } %></span>
-    <span>I N</span>
+    <div>IN</div>
     <span><%= f.date_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
-    <span>OUT</span>
+    <div>OUT</div>
     <span><%= f.date_field :end, placeholder: "XXXX-XX-XX", class:"field" %></span><br>
   </div>
   <div class="modal-footer">

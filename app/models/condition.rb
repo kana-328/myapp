@@ -5,7 +5,7 @@ class Condition < ApplicationRecord
   validates :recorded_at, presence: true
 
   def self.csv_attributes
-    %w(vitality defecation urination appetite vomit medicine staff)
+    %w(vitality defecation urination appetite vomit medicine staff comment)
   end
 
   def self.generate_csv
@@ -16,4 +16,6 @@ class Condition < ApplicationRecord
       end
     end
   end
+
+  scope :sorted, -> { order(created_at: :desc) }
 end

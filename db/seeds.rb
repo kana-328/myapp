@@ -5,6 +5,7 @@ User.create!( firstname: "example",
               address: "example",
               password: "1234",
               password_confirmation: "1234",
+              admin: true)
 
 Pet.create!(name: "exmaple.pet",
             breed: "チワワ",

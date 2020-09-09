@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @search = User.order(created_at: :DESC).ransack(params[:q])
+    @search = User.sorted.ransack(params[:q])
     @users = @search.result.includes(:pets).page(params[:page])
     respond_to do |format|
       format.html
