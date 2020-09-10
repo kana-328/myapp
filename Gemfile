@@ -35,7 +35,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rubocop-airbnb'
-  gem 'webdrivers'
   gem 'pry-byebug'
   gem 'pry-rails'
 end

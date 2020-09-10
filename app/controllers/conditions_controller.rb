@@ -14,14 +14,16 @@ class ConditionsController < ApplicationController
     @condition = Condition.new(params_condition)
     @condition.pet_id = @pet.id
     @conditions = @pet.conditions.sorted
-    if @condition.save
-      flash[:success] = '記入しました'
-      respond_to do |format|
-        format.js
+    respond_to do |format|
+      if @condition.save
+        format.js{ render json: @condition}
+        flash[:success] = '記入しました'
+        
+      else
+        format.js { render :new }
+        flash[:notice] = '記入が失敗しました'
+        render "new"
       end
-    else
-      flash[:notice] = '記入が失敗しました'
-      render 'new'
     end
   end
 

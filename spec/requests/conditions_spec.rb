@@ -12,7 +12,7 @@ RSpec.describe "Conditions", type: :request do
     end
   end
 
-  describe "POST pet_conditions_path" do
+  describe "POST pet_conditions_path", :js => true do
     let(:pet) { create(:pet) }
     let(:condition) { build(:condition, pet: pet) }
     let(:condition_params) { attributes_for(:condition) }
@@ -26,14 +26,12 @@ RSpec.describe "Conditions", type: :request do
         post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params }
       end
 
-      pending "conditionの数が１増える" do
-        expect do
-          post new_pet_condition_path(pet_id: pet.id), params: { condition: condition_params }
-        end.to change(Condition, :count).by(1)
+      it "conditionの数が１増える" do
+          expect { post pet_conditions_path(pet_id: pet.id), params: {condition: condition_params , format: :js} }.to change(Condition, :count).by(+1)
       end
 
-      pending '302レスポンスが返ってくる' do
-        expect(response.status).to eq 302
+      it '200レスポンスが返ってくる' do
+        expect(response.status).to eq 200
       end
 
       pending "期待しているページにリダイレクトされる" do

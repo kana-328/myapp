@@ -1,5 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Pets', type: :system do
+  include ActionDispatch::TestProcess
   describe "GET /users/:user_id/pets" do
     let(:user) { create(:user) }
     let(:pet) { create(:pet, user: user) }
@@ -30,10 +31,12 @@ RSpec.describe 'Pets', type: :system do
 
   describe "GET /users/:user_id/pets/new" do
     let(:user) { create(:user) }
+    let(:admin) { create(:admin) }
     let(:pet) { build_stubbed(:pet, user: user) }
 
     before do
       driven_by(:rack_test)
+      sign_in admin
       visit new_user_pet_path(user_id: pet.user_id)
     end
 
@@ -54,7 +57,6 @@ RSpec.describe 'Pets', type: :system do
     context 'フォームの必要な情報が空白だった時' do
       it 'バリデーションのエラーメッセージが表示される' do
         fill_in 'pet[name]', with: ""
-        find('.submit').click
         click_on '登録'
         expect(page).to have_content '名前を入力してください'
         expect(page).to have_content '保存されませんでした'

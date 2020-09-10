@@ -4,7 +4,6 @@ FactoryBot.define do
     birthday { '20200101' }
     breed { 'breed' }
     sex { 'sex' }
-    image { 'image' }
     association :user
   end
 end
