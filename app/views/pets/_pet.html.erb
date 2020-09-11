@@ -1,4 +1,3 @@
-<%= image_tag(pet.image.thumb.url, size: "70x70", class: "image") unless pet.image.file.nil?%>
 <h2><%= link_to "#{pet.user.firstname}""#{pet.name}", pet_path(id: pet.id) %>ちゃん<%= link_to "プロフィール編集", edit_pet_path(id: pet.id), class: 'btn btn-outline-warning' %></h2>
 <h4>種類:<%= pet.breed %></h4>
 <h4>性別:<%= pet.sex %></h4>

@@ -5,7 +5,7 @@ class PetsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @pets = @user.pets
+    @pets = Pet.includes(:user).where(user_id: @user.id)
   end
 
   def show

@@ -16,9 +16,8 @@ class ConditionsController < ApplicationController
     @conditions = @pet.conditions.sorted
     respond_to do |format|
       if @condition.save
-        format.js{ render json: @condition}
+        format.js
         flash[:success] = '記入しました'
-        
       else
         format.js { render :new }
         flash[:notice] = '記入が失敗しました'
