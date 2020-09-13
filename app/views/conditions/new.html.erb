@@ -1,4 +1,4 @@
-<% provide(:title, '管理表登録') %>
+ app/views/conditions/new.html.erb<% provide(:title, '管理表登録') %>
 <%= link_to "戻る", :back, class: 'btn btn-outline-secondary return-btn' %>
 <table class="table table-bordered">
   <thead>
@@ -9,7 +9,6 @@
   <div id="condition_js">
   <%= link_to 'CSV出力', new_pet_condition_path(format: :csv), class: 'btn btn-primary md-3' %>
     <%= form_for @condition, url: pet_conditions_path(pet_id: @pet.id), remote: true do |f| %>
-      <%= render "devise/shared/error_messages", resource: @condition %>
       <%= render "condition_form", f: f %>
     <% end %>
   </div>

@@ -27,15 +27,15 @@ RSpec.describe "Conditions", type: :request do
       end
 
       it "conditionの数が１増える" do
-          expect { post pet_conditions_path(pet_id: pet.id), params: {condition: condition_params , format: :js} }.to change(Condition, :count).by(+1)
+        expect { post pet_conditions_path(pet_id: pet.id), params: {condition: condition_params} }.to change(Condition, :count).by(+1)
       end
 
       it '200レスポンスが返ってくる' do
         expect(response.status).to eq 200
       end
 
-      pending "期待しているページにリダイレクトされる" do
-        expect(response).to redirect_to pet_conditions_path(pet_id: condition.pet_id)
+      it "期待しているページにリダイレクトされる" do
+        expect(response).to render_template(:new)
       end
     end
 

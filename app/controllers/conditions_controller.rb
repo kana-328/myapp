@@ -13,16 +13,12 @@ class ConditionsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @condition = Condition.new(params_condition)
     @condition.pet_id = @pet.id
-    @conditions = @pet.conditions.sorted
+    @conditions = Pet.includes(:conditions).where(id: @condtiion.pet_id).sorted
     respond_to do |format|
-      if @condition.save
+      @condition.save
+        flash[:notice] = '記入しました'
         format.js
-        flash[:success] = '記入しました'
-      else
-        format.js { render :new }
-        flash[:notice] = '記入が失敗しました'
-        render "new"
-      end
+        format.html { render :new }
     end
   end
 
