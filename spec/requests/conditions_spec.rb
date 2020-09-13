@@ -12,7 +12,7 @@ RSpec.describe "Conditions", type: :request do
     end
   end
 
-  describe "POST pet_conditions_path", :js => true do
+  describe "POST pet_conditions_path" do
     let(:pet) { create(:pet) }
     let(:condition) { build(:condition, pet: pet) }
     let(:condition_params) { attributes_for(:condition) }
@@ -32,10 +32,6 @@ RSpec.describe "Conditions", type: :request do
 
       it '200レスポンスが返ってくる' do
         expect(response.status).to eq 200
-      end
-
-      it "期待しているページにリダイレクトされる" do
-        expect(response).to render_template(:new)
       end
     end
 

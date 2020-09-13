@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     firstname { "firstname" }
     lastname { "lastname" }
-    email { "example@example.com" }
+    sequence(:email) { |n| "example#{n}@example.com" }
     password { 'foobar' }
     password_confirmation { password }
     address { '〇〇県〇〇市〇〇町○-○-○' }

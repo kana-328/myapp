@@ -8,7 +8,6 @@ RSpec.describe 'Reservations', type: :system do
     visit reservations_path
   end
 
-  Reservation.where(Reservation.arel_table[:start].gteq(Date.new(2020, 8, 31))).where(Reservation.arel_table[:test_date].lteq(Date.new(2020, 8, 31)))
   context "" do
     it '期待している文字が表示される' do
       within('div#text-center')
