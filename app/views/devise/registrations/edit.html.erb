@@ -1,6 +1,6 @@
 <% provide(:title, '顧客編集') %>
 <%= link_to "戻る", :back, class: 'btn btn-outline-secondary return-btn' %>
-<%= form_for(@user, url: users_registration_path(@user), html: { method: :put }) do |f| %>
+<%= form_for(@user, url: users_registration_path(@user), html: { method: :patch }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">

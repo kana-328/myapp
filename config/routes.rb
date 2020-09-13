@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get     '/signup',         to: 'users/registrations#new'
     post    '/signup',         to: 'users/registrations#create'
     get     '/users/:id/edit', to: 'users/registrations#edit', as: 'user_edit_registration'
-    put  '/users/:id',      to: 'users/registrations#update', as: 'users_registration'
+    patch  '/users/:id',      to: 'users/registrations#update', as: 'users_registration'
     delete  '/users/:id',      to: 'users/registrations#destroy'
     post    '/login',          to: 'users/sessions#create'
     delete  '/logout',         to: 'users/sessions#destroy'
