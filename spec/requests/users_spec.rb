@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Sessions', type: :request do
   describe "GET /index" do
-
     let!(:users) { create_list(:user, 30) }
 
     it "リクエストが成功すること" do

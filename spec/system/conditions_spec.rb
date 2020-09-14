@@ -10,7 +10,7 @@ RSpec.describe 'Conditions', type: :system, js: true do
     let!(:pet) { create(:pet) }
     let!(:other_pet) { create(:other_pet) }
     let!(:other_condition) { create(:other_condition, pet: other_pet) }
-    
+
     context 'フォームの必要な情報が入力された時' do
       it '期待しているメッセージが表示され、該当のペットのconditionのみ表示される' do
         choose 'condition_recorded_at_朝'
@@ -18,7 +18,7 @@ RSpec.describe 'Conditions', type: :system, js: true do
         click_button '登録'
         expect(page).to have_content '記入しました'
         expect(page).to have_content "testcomment"
-        expect(page).to_not have_content "other_condition.comment"
+        expect(page).not_to have_content "other_condition.comment"
       end
     end
   end

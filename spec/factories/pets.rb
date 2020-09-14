@@ -6,7 +6,7 @@ FactoryBot.define do
     sex { 'sex' }
     association :user
   end
-  
+
   factory :other_pet, class: "Pet" do
     name { 'other_pet.name' }
     birthday { '20200101' }

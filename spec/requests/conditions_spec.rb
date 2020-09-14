@@ -27,7 +27,7 @@ RSpec.describe "Conditions", type: :request do
       end
 
       it "conditionの数が１増える" do
-        expect { post pet_conditions_path(pet_id: pet.id), params: {condition: condition_params} }.to change(Condition, :count).by(+1)
+        expect { post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params } }.to change(Condition, :count).by(+1)
       end
 
       it '200レスポンスが返ってくる' do
