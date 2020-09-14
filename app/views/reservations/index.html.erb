@@ -1,23 +1,23 @@
 <div class="container">
-<h3 class="text-center">お世話リスト<%= Date.current %></h3>
-<div class="row">
-  <ul class="pets">
+  <div class="text-center">
+    <h3>今日のお世話リスト(<%= Date.current %>)</h3>
     <% @date.each do |reservation| %>
-      <li>
-        <div class="col">
-          <%= link_to reservation.name, pet_path(id: reservation.pet_id) %>
-          <%= reservation.title %>
-          IN<%= reservation.start %> 〜OUT<%= reservation.end %>
-        </div>
-        <div class="col">
-          <%= link_to '体重記入',new_pet_body_path(pet_id: reservation.pet_id), class: 'btn btn-info' %>
-          <%= link_to "管理表", new_pet_condition_path(pet_id: reservation.pet_id),  class: 'btn btn-primary' %>
-          <%= link_to "予約削除", reservation_path(id: reservation.id), method: :delete,
-          class: 'btn btn-danger',data: { confirm: "#{reservation.name}ちゃんの予約を消してもよろしいですか?" } %>
-        </div>
-      </li>
+      <ul class="pets">
+        <li>
+          <div class="col">
+            <h4><%= link_to reservation.name, pet_path(id: reservation.pet_id) %></h4>
+            <p><%= reservation.title %>
+            IN<%= reservation.start %> 〜OUT<%= reservation.end %></p>
+          </div>
+          <div class="col">
+            <%= link_to '体重記入',new_pet_body_path(pet_id: reservation.pet_id), class: 'btn btn-info' %>
+            <%= link_to "管理表", new_pet_condition_path(pet_id: reservation.pet_id),  class: 'btn btn-primary' %>
+            <%= link_to "予約削除", reservation_path(id: reservation.id), method: :delete,
+            class: 'btn btn-danger',data: { confirm: "#{reservation.name}ちゃんの予約を消してもよろしいですか?" } %>
+          </div>
+        </li>
+      </ul>
     <% end %>
-  </ul>
   </div>
 </div>
 <div id="calendar"></div>
