@@ -11,6 +11,7 @@ RSpec.describe 'Reservations', type: :system do
   around do |e|
     travel_to('2020-01-01') { e.run }
   end
+
   it '期待している文字が表示される' do
     within('div#text-center')
     expect(page).to have_content 'お世話リスト'
