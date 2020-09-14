@@ -1,8 +1,7 @@
-<%= image_tag pet.image.thumb.url if pet.image? %>
 <h2><%= link_to "#{pet.user.firstname}""#{pet.name}", pet_path(id: pet.id) %>ちゃん<%= link_to "プロフィール編集", edit_pet_path(id: pet.id), class: 'btn btn-outline-warning' %></h2>
 <h4>種類:<%= pet.breed %></h4>
 <h4>性別:<%= pet.sex %></h4>
 <h4>生年月日:<%= pet.birthday %></h4>
 <%= link_to "予約",  new_pet_reservation_path(pet_id: pet.id), class: 'btn btn-danger' %>
-<%= link_to "管理表", new_pet_condition_path(pet_id: pet.id),data: {"turbolinks" => false },  class: 'btn btn-success' %>
+<%= link_to "管理表", new_pet_condition_path(pet_id: pet.id),data: {"turbolinks" => false },  class: 'btn btn-primary' %>
 <%= link_to '体重記入',new_pet_body_path(pet_id: pet.id), class: 'btn btn-info' %>

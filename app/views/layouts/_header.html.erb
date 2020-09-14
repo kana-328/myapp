@@ -2,30 +2,30 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="bs-component">
-       <% if user_signed_in? %>
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <%= link_to "スケジュール表", reservations_path, class: 'nav-link',data: {"turbolinks" => false } %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "顧客新規登録", signup_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ユーザ一覧・検索", users_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", logout_path,{ method: :delete, class: "nav-link"} %>
-          </li>
-        </ul>
-        <% else %>
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <%= link_to "新規登録", signup_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", root_path, class: 'nav-link' %>
-          </li>
-        </ul>
+        <% if user_signed_in? %>
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <%= link_to "管理表", reservations_path, class: 'nav-link',data: {"turbolinks" => false } %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ユーザ一覧・検索", users_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "顧客新規登録", signup_path, class: 'nav-link' %> 
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", logout_path,{ method: :delete, class: "nav-link"} %>
+            </li>
+          </ul>
+          <% else %>
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <%= link_to "新規登録", signup_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", root_path, class: 'nav-link' %>
+            </li>
+          </ul>
         <% end %>
       </div>
     </div>

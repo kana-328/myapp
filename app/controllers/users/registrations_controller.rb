@@ -15,6 +15,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(params_user)
+      flash[:notice] = 'ユーザー情報を更新しました'
+      redirect_to users_path
+    else
+      flash[:notice] = '失敗しました'
+    end
+  end
+
   def destroy
     @user = User.find_by(id: params[:id])
     @user.destroy
@@ -30,9 +40,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update_resource(resource, params)
     resource.update_without_current_password(params)
-  end
-
-  def after_update_path_for(resource)
-    user_pets_path(resource)
   end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get     '/signup',         to: 'users/registrations#new'
     post    '/signup',         to: 'users/registrations#create'
     get     '/users/:id/edit', to: 'users/registrations#edit', as: 'user_edit_registration'
-    patch   '/users/:id',      to: 'users/registrations#update', as: 'users_registration'
+    patch  '/users/:id',      to: 'users/registrations#update', as: 'users_registration'
     delete  '/users/:id',      to: 'users/registrations#destroy'
     post    '/login',          to: 'users/sessions#create'
     delete  '/logout',         to: 'users/sessions#destroy'
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :pets, only: [:new, :index, :create] 
     end
   resources :pets, only: [:show, :edit, :update, :destroy] do
-    resources :conditions, only: [:new, :create, :edit, :update, :destroy] ,shallow: true
+    resources :conditions, shallow: true
     resources :bodies, only: [:new, :create, :destroy]
     resources :reservations, only: [:new, :create]
   end

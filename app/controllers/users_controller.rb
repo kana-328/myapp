@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @search = User.order(created_at: :DESC).ransack(params[:q])
-    @users = @search.result.includes(:pets).page(params[:page])
+    @search = User.sorted.ransack(params[:q])
+    @users = @search.result.page(params[:page]).per(20)
     respond_to do |format|
       format.html
       format.csv { send_data @users.generate_csv, filename: "users-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }

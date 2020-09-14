@@ -68,7 +68,7 @@ RSpec.describe 'Registrations', type: :request do
 
       it "期待しているページにリダイレクトされる" do
         patch users_registration_path(id: user.id), params: { user: user_params }
-        expect(response).to redirect_to user_pets_path(user_id: user.id)
+        expect(response).to redirect_to users_path
       end
     end
   end

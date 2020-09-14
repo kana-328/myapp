@@ -8,33 +8,17 @@ RSpec.describe 'Conditions', type: :system, js: true do
 
     let!(:condition) { create(:condition, pet: pet) }
     let!(:pet) { create(:pet) }
+    let!(:other_pet) { create(:other_pet) }
+    let!(:other_condition) { create(:other_condition, pet: other_pet) }
 
     context 'フォームの必要な情報が入力された時' do
-      pending '期待しているメッセージが表示される' do
+      it '期待しているメッセージが表示され、該当のペットのconditionのみ表示される' do
         choose 'condition_recorded_at_朝'
-        fill_in 'condition[comment]', with: condition.comment
+        fill_in 'condition[comment]', with: "testcomment"
         click_button '登録'
-
         expect(page).to have_content '記入しました'
-        expect(page).to have_content 'pet.name'
-        expect(page).to have_content '元気'
-        expect(page).to have_content '食欲'
-        expect(page).to have_content '排便'
-        expect(page).to have_content '排尿'
-        expect(page).to have_content '嘔吐'
-        expect(page).to have_content '投薬'
-        expect(page).to have_content 'コメント'
-        expect(page).to have_content 'スタッフ'
-        expect(page).to have_content '編集'
-        expect(page).to have_content '削除'
-      end
-    end
-
-    context 'フォームの必要な情報が入力されなかったとき時' do
-      it 'バリデーションのエラーメッセージが表示され' do
-        fill_in 'condition[comment]', with: condition.comment
-        click_button '登録'
-        expect(page).to have_content '記入が失敗しました'
+        expect(page).to have_content "testcomment"
+        expect(page).not_to have_content "other_condition.comment"
       end
     end
   end
@@ -69,6 +53,7 @@ RSpec.describe 'Conditions', type: :system, js: true do
   describe "DELETE condition_path" do
     let!(:condition) { create(:condition, pet: pet) }
     let!(:pet) { create(:pet) }
+    let(:admin) { create(:admin) }
 
     before do
       driven_by(:rack_test)

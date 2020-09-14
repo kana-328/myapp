@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
-    @date = Pet.find_by_sql(current_date_sql)
+    @date = Pet.find_by_sql(reservation_today_date)
     respond_to do |format|
       format.html
       format.json { render :json => @reservations.to_json(only: [:title, :start, :end, :id, :name]) }
@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
     redirect_to reservations_path
   end
 
-  def current_date_sql
+  def reservation_today_date
     "SELECT * FROM  pets JOIN reservations ON pets.id = reservations.pet_id WHERE current_date BETWEEN reservations.start AND reservations.end ORDER BY reservations.start"
   end
 

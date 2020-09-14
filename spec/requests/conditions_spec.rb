@@ -26,18 +26,12 @@ RSpec.describe "Conditions", type: :request do
         post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params }
       end
 
-      pending "conditionの数が１増える" do
-        expect do
-          post new_pet_condition_path(pet_id: pet.id), params: { condition: condition_params }
-        end.to change(Condition, :count).by(1)
+      it "conditionの数が１増える" do
+        expect { post pet_conditions_path(pet_id: pet.id), params: { condition: condition_params } }.to change(Condition, :count).by(+1)
       end
 
-      pending '302レスポンスが返ってくる' do
-        expect(response.status).to eq 302
-      end
-
-      pending "期待しているページにリダイレクトされる" do
-        expect(response).to redirect_to pet_conditions_path(pet_id: condition.pet_id)
+      it '200レスポンスが返ってくる' do
+        expect(response.status).to eq 200
       end
     end
 

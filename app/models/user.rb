@@ -38,4 +38,6 @@ class User < ApplicationRecord
       end
     end
   end
+
+  scope :sorted, -> { order(created_at: :desc) }
 end
