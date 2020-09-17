@@ -25,3 +25,5 @@
 ☆Unicorn<br>
 #### Webサーバー<br>
 ☆Nginx<br>
+#### テスト
+Rspec
