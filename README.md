@@ -1,24 +1,27 @@
-# README
+# アプリケーションの概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ペットの体調管理、ホテル等の予約をカレンダー表示できるサービス。
 
-Things you may want to cover:
+# 機能
+*朝昼夜を分け体調管理表記入できる<br>
+*体重を記入しグラフ化して見れる(chart.jsで表示)<br>
+*予約をカレンダー表示し混み具合を確認できる(fullcalender使用)<br>
+*本日予約が入っているペットを一覧表示<br>
+*顧客一覧表示、検索(Ransack使用)<br>
+*ペット登録<br>
+*ログイン機能（devise使用)<br>
+*CSV出力<br>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 環境
+#### フレームワーク<br>
+☆Ruby on Rails<br>
+#### インフラ<br>
+☆AWS EC2<br>
+☆Docker<br>
+#### データベース<br>
+☆AWS RDS<br>
+☆postgreSQL<br>
+#### アプリケーションサーバー<br>
+☆Unicorn<br>
+#### Webサーバー<br>
+☆Nginx<br>
