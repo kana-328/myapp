@@ -1,0 +1,2 @@
+class ContactMailer < ApplicationRecord
+end

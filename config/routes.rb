@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resource :static_pages,         only: [:show]
+  resources :static_pages,         only: [:index, :show]
   resources :users,    only: [:index] do
     resources :pets, only: [:new, :index, :create] 
     end
