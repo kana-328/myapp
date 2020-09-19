@@ -1,0 +1,17 @@
+.pagination>li>a {          
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {     
+  background: #C1E5FF;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px;
+}
+
+.paginate {
+  margin: auto;
+}

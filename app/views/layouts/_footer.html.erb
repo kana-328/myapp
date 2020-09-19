@@ -1,3 +1,7 @@
 <footer>
-  <h1 class="title">Pet Diary</h1>
+  <% if user_signed_in? %>
+    <h1 class="title">Pet Diary</h1>
+  <% else %>
+    <p class="title">Copyright © 2020 Inc. All Rights Reserved.</p>
+  <% end %>
 </footer>

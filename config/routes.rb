@@ -1,22 +1,24 @@
 Rails.application.routes.draw do
+  root 'static_pages#index'
 
   devise_scope :user do
-    root   'users/sessions#new'
     get     '/signup',         to: 'users/registrations#new'
     post    '/signup',         to: 'users/registrations#create'
     get     '/users/:id/edit', to: 'users/registrations#edit', as: 'user_edit_registration'
     patch  '/users/:id',      to: 'users/registrations#update', as: 'users_registration'
     delete  '/users/:id',      to: 'users/registrations#destroy'
     post    '/login',          to: 'users/sessions#create'
+    get     '/login',          to: 'users/sessions#new'
     delete  '/logout',         to: 'users/sessions#destroy'
+    delete  '/static_page/help',         to: 'static_pages#help'
   end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
-  resources :static_pages,         only: [:index, :show]
+  resource :introduce,       only: [:index]
+  resource :static_pages,    only: [:show]
   resources :users,    only: [:index] do
     resources :pets, only: [:new, :index, :create] 
     end

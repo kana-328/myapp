@@ -17,15 +17,8 @@
               <%= link_to "ログアウト", logout_path,{ method: :delete, class: "nav-link"} %>
             </li>
           </ul>
-          <% else %>
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <%= link_to "新規登録", signup_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", root_path, class: 'nav-link' %>
-            </li>
-          </ul>
+        <% else %>
+          <h1 class="title">Pet Diary</h1>
         <% end %>
       </div>
     </div>
