@@ -2,8 +2,7 @@
 <%= link_to "戻る", :back, class: 'btn btn-outline-secondary return-btn' %>
 <div class="container">
   <%= link_to "ペット追加登録", new_user_pet_path, class: 'btn btn-secondary' %>
-  <%= link_to "ユーザー編集", user_edit_registration_path(id: @user.id), class: 'btn btn-warning' %>
-  <h2 class="my-4"><%= @user.firstname %>さま</h2>
+  <h2 class="my-4"><%= @user.firstname %>さま<%= link_to "ユーザー編集", user_edit_registration_path(id: @user.id), class: 'btn btn-outline-warning' %></h2>
   <h5>名前:<%= @user.firstname %> <%= @user.lastname %></h5>
   <hr> 
   <h5>電話番号:<%= @user.tel %></h5>
