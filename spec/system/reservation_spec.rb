@@ -2,9 +2,11 @@ require 'rails_helper'
 RSpec.describe 'Reservations', type: :system do
   let!(:reservation) { create(:reservation, start: "2020-01-01", end: "2020-01-05", pet: pet) }
   let!(:pet) { create(:pet) }
+  let(:user) { create(:user) }
 
   before do
     driven_by(:rack_test)
+    sign_in user
     visit reservations_path
   end
 

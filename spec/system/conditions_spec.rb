@@ -1,18 +1,21 @@
 require 'rails_helper'
 RSpec.describe 'Conditions', type: :system, js: true do
   describe "GET new_pet_condition" do
-    before do
-      driven_by(:rack_test)
-      visit new_pet_condition_path(pet_id: pet.id)
-    end
-
     let!(:condition) { create(:condition, pet: pet) }
     let!(:pet) { create(:pet) }
+    let(:user) { create(:user) }
     let!(:other_pet) { create(:other_pet) }
     let!(:other_condition) { create(:other_condition, pet: other_pet) }
 
+    before do
+      driven_by(:rack_test)
+      sign_in user
+      visit new_pet_condition_path(pet_id: pet.id)
+    end
+
     context 'フォームの必要な情報が入力された時' do
       it '期待しているメッセージが表示され、該当のペットのconditionのみ表示される' do
+        sign_in user
         choose 'condition_recorded_at_朝'
         fill_in 'condition[comment]', with: "testcomment"
         click_button '登録'
@@ -24,13 +27,15 @@ RSpec.describe 'Conditions', type: :system, js: true do
   end
 
   describe "PATCH condition_path" do
-    before do
-      driven_by(:rack_test)
-      visit edit_condition_path(id: condition.id)
-    end
-
     let(:condition) { create(:condition, pet: pet) }
     let(:pet) { create(:pet) }
+    let(:user) { create(:user) }
+
+    before do
+      driven_by(:rack_test)
+      sign_in user
+      visit edit_condition_path(id: condition.id)
+    end
 
     context 'フォームの必要な情報が入力された時' do
       it '期待しているメッセージが表示され内容が変更されている' do
@@ -57,6 +62,7 @@ RSpec.describe 'Conditions', type: :system, js: true do
 
     before do
       driven_by(:rack_test)
+      sign_in admin
     end
 
     it '削除される' do

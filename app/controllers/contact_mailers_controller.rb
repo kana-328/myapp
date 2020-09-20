@@ -1,7 +1,6 @@
 class ContactMailersController < ApplicationController
-
   def create
-    @mailer = ContactMailer.new (mailer_params)
+    @mailer = ContactMailer.new mailer_params
     if @mailer.save
       ContactMailer.contact_mail(@mailer).deliver
       redirect_to users_path

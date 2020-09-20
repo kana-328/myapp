@@ -5,6 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(params_user)
     if @user.save
       flash[:notice] = '更新しました'
+      sign_in @user
       redirect_to new_user_pet_path(@user)
     else
       render 'new'
