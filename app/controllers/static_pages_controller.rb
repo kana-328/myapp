@@ -5,6 +5,6 @@ class StaticPagesController < ApplicationController
   def show
   end
 
-  def help
+  def introduce
   end
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post    '/login',          to: 'users/sessions#create'
     get     '/login',          to: 'users/sessions#new'
     delete  '/logout',         to: 'users/sessions#destroy'
-    delete  '/static_page/help',         to: 'static_pages#help'
+    get     '/static_pages/introduce',  to: 'static_pages#introduce'
   end
 
   devise_for :users, controllers: {
