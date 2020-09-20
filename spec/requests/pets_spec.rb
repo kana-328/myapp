@@ -5,6 +5,7 @@ RSpec.describe 'Pets', type: :request do
     let(:pet) { build_stubbed(:pet, user: user) }
 
     it '顧客登録画面のリクエストが成功すること' do
+      sign_in user
       get new_user_pet_path(user_id: pet.user_id)
       expect(response.status).to eq 200
     end
@@ -16,6 +17,7 @@ RSpec.describe 'Pets', type: :request do
     let(:pet_params) { attributes_for(:pet) }
 
     before do
+      sign_in user
       get new_user_pet_path(user_id: pet.user_id)
     end
 
@@ -44,6 +46,7 @@ RSpec.describe 'Pets', type: :request do
     let(:pet_params) { attributes_for(:pet) }
 
     before do
+      sign_in user
       get edit_pet_path(id: pet.id)
     end
 
@@ -75,6 +78,7 @@ RSpec.describe 'Pets', type: :request do
     let(:condition_params) { attributes_for(:condition) }
 
     before do
+      sign_in user
       get user_pets_path(user_id: pet.user_id)
     end
 

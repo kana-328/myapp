@@ -4,7 +4,7 @@ RSpec.describe 'Sessions', type: :system do
 
   before do
     driven_by(:rack_test)
-    visit root_path
+    visit login_path
   end
 
   it '期待しているタイトルが表示される' do

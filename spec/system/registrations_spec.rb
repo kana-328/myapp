@@ -2,6 +2,7 @@ require 'rails_helper'
 RSpec.describe 'Registrations', type: :system do
   describe "GET sign_up" do
     let(:user) { build_stubbed(:user) }
+    let(:sign_in_user) { create(:user) }
 
     before do
       driven_by(:rack_test)
@@ -31,6 +32,7 @@ RSpec.describe 'Registrations', type: :system do
 
     context 'フォームの入力が正常にされた時' do
       it '登録が成功し期待してるメッセージが表示される' do
+        sign_in_user
         fill_in 'user[firstname]', with: user.firstname
         fill_in 'user[lastname]', with: user.lastname
         fill_in 'user[tel]', with: user.tel

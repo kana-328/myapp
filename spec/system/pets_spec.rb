@@ -7,6 +7,7 @@ RSpec.describe 'Pets', type: :system do
 
     before do
       driven_by(:rack_test)
+      sign_in user
       visit user_pets_path(user_id: pet.user_id)
     end
 

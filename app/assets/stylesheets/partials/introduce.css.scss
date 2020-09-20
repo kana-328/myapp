@@ -1,0 +1,64 @@
+.introduce-topimage {
+  background-image: image-url("love.jpg");
+  height: 280px;
+  width: 100%;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+
+.introduce-text {
+  margin-left: 415px;
+  padding-top: 100px;
+  font-family: Courier;
+  color: #444444;
+}
+
+.introduce-back {
+  padding-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+  height: 700px;
+}
+
+.introduce-main1 {
+  background-color: #f3f3f3;
+  width: 480px;
+  height: 550px;
+  padding-left: 20px
+}
+
+.main {
+  padding-top: 25px;
+  letter-spacing: 5px;
+}
+
+.introduce-item {
+  height: 120px;
+  width: 440px;
+  background-color: #fff;
+  margin-top: 25px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+
+
+.introduce-list {
+  letter-spacing: 5px;
+  padding-top: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.margin {
+  margin-top: 10px;
+}
+
+.introduce-title {
+  letter-spacing: 8px;
+  text-align: center;
+  padding-top: 75px;
+}

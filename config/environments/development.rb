@@ -40,7 +40,7 @@ Rails.application.configure do
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-
+  config.web_console.whitelisted_ips = '172.19.0.1'
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
   config.sass.inline_source_maps = true
@@ -48,7 +48,7 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = false
-
+  config.assets.digest = false
   # Suppress logger output for asset requests.
   config.assets.quiet = true
   

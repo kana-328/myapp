@@ -4,6 +4,11 @@ RSpec.describe "Bodies", type: :request do
   describe "GET /new" do
     let(:pet) { create(:pet) }
     let(:body) { build_stubbed(:body) }
+    let(:user) { create(:user) }
+
+    before do
+      sign_in user
+    end
 
     it "200レスポンスが返ってくる" do
       get new_pet_body_path(pet_id: pet.id)
