@@ -38,6 +38,10 @@ class User < ApplicationRecord
       end
     end
   end
+  
+  def self.send_report
+    UserMailer.report(User.first).deliver_now
+  end
 
   scope :sorted, -> { order(created_at: :desc) }
 end
