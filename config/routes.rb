@@ -28,4 +28,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create]
   end
   resources :reservations, only: [:index, :destroy]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end

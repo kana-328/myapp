@@ -4,6 +4,6 @@ class ContactMailer < ApplicationMailer
   def send_mail(user)
     @user = user
     @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'お問い合わせ')
+    mail(to: @user.email, subject: '今日のご様子')
   end
 end
