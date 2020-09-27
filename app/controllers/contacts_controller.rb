@@ -2,12 +2,15 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @condition = Condition.find(params[:id])
+
   end
 
   def create
-    @contact = ContactMailer.new(contact_params)
+    @contact = Contact.new(contact_params)
+    @condition = Condition.find(params[:contact][:id])
     if @contact.save
-      ContactMailer.send_mail(@user).deliver
+      ContactMailer.send_mail(User.first, @condition).deliver
       redirect_to reservations_path
       flash[:notice] = 'メールを送信しました'
     else

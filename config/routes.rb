@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   }
   resource :introduce,       only: [:index]
   resource :static_pages,    only: [:show]
+  resources :contacts,       only: [:new, :create]
   resources :users,    only: [:index] do
     resources :pets, only: [:new, :index, :create] 
     end

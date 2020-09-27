@@ -1,0 +1,32 @@
+<% provide(:title, 'メール送信') %>
+<%= form_for(@contact, url: contacts_path ) do |f| %>
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">メール送信</h1>
+                </div>
+                <%= f.hidden_field :id, :value => @condition.id %>
+                <div class="form-group">
+                  <%= f.label :name, '宛先'%>
+                  <%= f.text_field :name, class: "form-control form-control-user", 
+                  id: "exampleInputName" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :message, '本文'%>
+                  <%= f.text_area :message, class: "form-control form-control-user", size: "10x10" %>
+                </div>
+                <%= f.submit "送信" , class: "btn btn-danger btn-user btn-block outline"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

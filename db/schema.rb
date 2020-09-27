@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_143022) do
+ActiveRecord::Schema.define(version: 2020_09_27_091946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2020_09_22_143022) do
     t.date "recorded_date"
   end
 
-  create_table "contact_mailers", force: :cascade do |t|
+  create_table "contacts", force: :cascade do |t|
     t.string "name"
-    t.text "message"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
