@@ -16,11 +16,7 @@
                 <div class="form-group">
                 <%= f.label :message, '一言追加'%>
                 <%= text_field_tag(:message, "",{ id: "test-input", class: "form-control", oninput: "func1();", autocomplete: 'off'}) %> 
-                </div>        
-                <%= f.label :name, '名前'%>
-                  <%= f.text_field :name, class: "form-control form-control-user", 
-                  id: "exampleInputName" %>
-                </div>    
+                </div>  
                 <%= f.submit "送信" , class: "btn btn-danger btn-user btn-block outline"%>
               </div>
             </div>

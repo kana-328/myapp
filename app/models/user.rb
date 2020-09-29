@@ -15,7 +15,6 @@ class User < ApplicationRecord
 
   def update_without_current_password(params, *options)
     params.delete(:current_password)
-
     if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:password)
       params.delete(:password_confirmation)
@@ -37,10 +36,6 @@ class User < ApplicationRecord
         csv << csv_attributes.map { |attr| task.send(attr) }
       end
     end
-  end
-  
-  def self.send_report
-    UserMailer.report(User.first).deliver_now
   end
 
   scope :sorted, -> { order(created_at: :desc) }

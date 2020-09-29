@@ -1,7 +1,7 @@
 class ContactMailer < ApplicationMailer
   default from: 'notifications@example.com'
 
-  def send_mail(condition, message)
+  def email_to_user(condition, message)
     @message = message
     @condition = condition
     pet = @condition.pet_id

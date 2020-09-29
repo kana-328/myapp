@@ -16,7 +16,6 @@ class ConditionsController < ApplicationController
     @conditions = Condition.where(pet_id: @pet.id).sorted
     respond_to do |format|
       @condition.save
-      ContactMailer.send_mail(@pet.user).deliver
       flash.now[:notice] = '記入しました'
       format.js
       format.html { render :new }

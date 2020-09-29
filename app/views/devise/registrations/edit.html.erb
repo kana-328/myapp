@@ -15,7 +15,7 @@
               <%= render "form_without_password", f: f %>             
                 <%= f.submit "登録", class: "actions btn btn-danger btn-user btn-block outline"%>        
               <div class="text-center">
-              <% if current_user.admin? %>
+              <% if user_signed_in? %>
                 <%= link_to "ユーザー削除",  users_registration_path(id: @user.id), class: 'btn btn-warning',
                  method: :delete,class: 'btn btn-danger',data: { confirm: "#{@user.firstname}#{@user.lastname}さまを消してもよろしいですか?" } %>
               <% end %>
