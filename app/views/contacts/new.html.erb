@@ -11,16 +11,16 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">メール送信</h1>
                 </div>
+                <%= render "send_email", condition: @condition, user: @user, pet: @pet %>
                 <%= f.hidden_field :id, :value => @condition.id %>
                 <div class="form-group">
-                  <%= f.label :name, '宛先'%>
+                <%= f.label :message, '一言追加'%>
+                <%= text_field_tag(:message, "",{ id: "test-input", class: "form-control", oninput: "func1();", autocomplete: 'off'}) %> 
+                </div>        
+                <%= f.label :name, '名前'%>
                   <%= f.text_field :name, class: "form-control form-control-user", 
                   id: "exampleInputName" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :message, '本文'%>
-                  <%= f.text_area :message, class: "form-control form-control-user", size: "10x10" %>
-                </div>
+                </div>    
                 <%= f.submit "送信" , class: "btn btn-danger btn-user btn-block outline"%>
               </div>
             </div>

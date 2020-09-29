@@ -44,4 +44,4 @@
 </table>
 <%= link_to "削除", condition_path(id: condition.id),{ method: :delete, data: {"turbolinks" => false }, class: 'btn btn-outline-secondary'} %>
 <%= link_to "編集", edit_condition_path(id: condition.id), data: {"turbolinks" => false }, class: 'btn btn-outline-secondary' %>
-<%= link_to "メールを送る", new_contact_path(id: condition.id), data: {"turbolinks" => false }, class: 'btn btn-outline-secondary' %>
+<%= link_to "メールを送る", new_contact_path(id: condition.id), data: {"turbolinks" => false }, class: 'btn btn-secondary' %>
