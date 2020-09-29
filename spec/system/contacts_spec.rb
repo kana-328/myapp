@@ -8,7 +8,7 @@ RSpec.describe 'Contacts', type: :system do
     it '期待しているメッセージが表示される' do
       sign_in user
       visit new_contact_path(id: condition.id)
-      click_on 'メール送信'
+      click_button '送信'
       expect(page).to have_content 'メールを送信しました'
     end
   end
