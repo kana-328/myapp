@@ -32,12 +32,11 @@ RSpec.describe 'Pets', type: :system do
 
   describe "GET /users/:user_id/pets/new" do
     let(:user) { create(:user) }
-    let(:admin) { create(:admin) }
     let(:pet) { build_stubbed(:pet, user: user) }
 
     before do
       driven_by(:rack_test)
-      sign_in admin
+      sign_in user
       visit new_user_pet_path(user_id: pet.user_id)
     end
 

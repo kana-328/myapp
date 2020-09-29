@@ -19,3 +19,10 @@
 //= require bootstrap-sprockets
 //= require popper
 //= require_tree .
+
+function func1() {
+  var x = document.getElementById("test-span");
+  var y = document.getElementById("test-input");
+
+  x.innerHTML = y.value
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_061334) do
+ActiveRecord::Schema.define(version: 2020_09_29_083915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,8 @@ ActiveRecord::Schema.define(version: 2020_09_18_061334) do
     t.date "recorded_date"
   end
 
-  create_table "contact_mailers", force: :cascade do |t|
-    t.string "name"
-    t.text "message"
+  create_table "contacts", force: :cascade do |t|
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_061334) do
     t.datetime "updated_at", null: false
     t.string "sex"
     t.integer "user_id"
-    t.string "image"
     t.index ["name"], name: "index_pets_on_name"
   end
 
@@ -81,7 +79,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_061334) do
     t.string "lastname"
     t.string "address"
     t.string "tel"
-    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["firstname", "lastname", "tel"], name: "index_users_on_firstname_and_lastname_and_tel"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
