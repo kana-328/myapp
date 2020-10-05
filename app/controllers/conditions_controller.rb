@@ -3,7 +3,7 @@ class ConditionsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @condition = Condition.new
     @search = Condition.where(pet_id: @pet.id).sorted.ransack(params[:q])
-    @conditions = @search.result(distinct: true)
+    @conditions = @search.result(distinct: true).page(params[:page]).per(10)
     respond_to do |format|
       format.html
       format.csv { send_data @pet.conditions.generate_csv, filename: "conditions-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
