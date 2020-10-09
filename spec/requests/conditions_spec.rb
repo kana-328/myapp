@@ -3,6 +3,7 @@ RSpec.describe "Conditions", type: :request do
   describe "GET new_pet_condition" do
     let(:pet) { create(:pet) }
     let(:user) { create(:user) }
+    let!(:conditions) { create_list(:condition, 20, pet: pet) }
 
     before do
       sign_in user
@@ -11,6 +12,10 @@ RSpec.describe "Conditions", type: :request do
 
     it '200レスポンスが返ってくる' do
       expect(response.status).to eq 200
+    end
+
+    it 'conditionが10件表示されている' do
+      expect(assigns(:conditions).size).to eq 10
     end
   end
 
