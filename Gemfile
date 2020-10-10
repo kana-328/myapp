@@ -29,6 +29,7 @@ gem "mini_magick", ">= 4.9.4"
 gem 'fog-aws'
 gem 'ransack'
 gem 'bullet'
+gem 'roo'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -61,5 +62,3 @@ group :production, :staging do
   gem 'unicorn'
   gem 'mini_racer'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
