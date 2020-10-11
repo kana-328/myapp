@@ -42,7 +42,6 @@ class User < ApplicationRecord
     CSV.foreach(file.path, headers: true,  encoding: 'UTF-8') do |row|
       # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
       user = find_by(id: row["id"]) || new
-      # CSVからデータを取得し、設定する
       user.attributes = row.to_hash.slice(*updatable_attributes)
       user.save!(validate: false)
     end
