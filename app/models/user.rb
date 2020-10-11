@@ -39,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true,  encoding: 'UTF-8') do |row|
+    CSV.foreach(file.path, headers: true, encoding: 'UTF-8') do |row|
       # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
       user = find_by(id: row["id"]) || new
       user.attributes = row.to_hash.slice(*updatable_attributes)
