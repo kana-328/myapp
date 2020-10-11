@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def self.csv_attributes
-    %w(firstname lastname address email tel)
+    %w(id firstname lastname address email tel)
   end
 
   def self.generate_csv
@@ -36,6 +36,19 @@ class User < ApplicationRecord
         csv << csv_attributes.map { |attr| task.send(attr) }
       end
     end
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true, encoding: 'UTF-8') do |row|
+      # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
+      user = find_by(id: row["id"]) || new
+      user.attributes = row.to_hash.slice(*updatable_attributes)
+      user.save!(validate: false)
+    end
+  end
+
+  def self.updatable_attributes
+    ['id', 'firstname', 'lastname', 'address', 'email', 'tel']
   end
 
   scope :sorted, -> { order(created_at: :desc) }

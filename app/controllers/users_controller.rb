@@ -7,4 +7,9 @@ class UsersController < ApplicationController
       format.csv { send_data @users.generate_csv, filename: "users-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end
+
+  def import
+    User.import(params[:file])
+    redirect_to users_path
+  end
 end

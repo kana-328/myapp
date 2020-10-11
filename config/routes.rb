@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resource :static_pages,    only: [:show]
   resources :contacts,       only: [:new, :create]
   resources :users,    only: [:index] do
+    collection { post :import }
     resources :pets, only: [:new, :index, :create] 
     end
   resources :pets, only: [:show, :edit, :update, :destroy] do
