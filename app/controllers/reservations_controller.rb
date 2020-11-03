@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
     @date = Pet.find_by_sql(reservation_today_date)
     respond_to do |format|
       format.html
-      format.json { render :json => @reservations.to_json(only: [:title, :start, :end, :id, :name]) }
+      format.json { render :json => @reservations.to_json(only: [:title, :start, :end, :id]) }
     end
   end
 

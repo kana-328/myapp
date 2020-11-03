@@ -94,7 +94,6 @@ RSpec.describe 'Pets', type: :system do
       expect(page).to have_content '名前'
       expect(page).to have_content '種類'
       expect(page).to have_content '性別'
-      expect(page).to have_content '登録'
       expect(page).to have_content 'ペット削除'
     end
 
