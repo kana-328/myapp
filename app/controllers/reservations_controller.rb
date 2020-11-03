@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.includes(:pet)
+    @reservations = Reservation.all
     @date = Pet.find_by_sql(reservation_today_date)
     respond_to do |format|
       format.html
