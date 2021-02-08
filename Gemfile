@@ -24,7 +24,7 @@ gem 'kaminari'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'gon',  '~> 6.2.0'
-gem 'carrierwave',             '1.1.0'
+gem 'carrierwave',             '1.3.2'
 gem "mini_magick", ">= 4.9.4"
 gem 'fog-aws'
 gem 'ransack'
